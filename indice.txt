@@ -1,0 +1,36 @@
+Sommario/Abstract
+
+Introduzione
+	Azienda
+	Organizzazione del testo
+	Organizzazione del documento 
+
+Descrizione dello Stage
+	Analisi dei rischi
+	Principali problematiche
+	Soluzione scelta
+	Pianificazione
+	Requisiti e Obiettivi
+
+Ambiente di sviluppo
+	Microsoft Visual Studio
+	Web Service
+	SQLServer
+
+Sviluppo Software
+	License Manager 1.0
+	Registrazione di una licenza
+	Avvio Online del software
+	Avvio Offline del software
+	Controllo della licenza durante l'esecuzione
+	Disattivazione licenza
+	Cambio Email associato
+
+Valutazione retrospettiva
+	Obiettivi fissati
+	Obiettivi raggiunti
+	Conclusioni
+
+Glossario
+
+ 
