@@ -1,2 +1,2 @@
-# thesis_template
-A simple Thesis template for the Bachelor Degree in Computer Science @Unipadova
+# Tesi di laurea triennale Tricomi Pier Paolo
+Sviluppo di un sistema per la gestione e il controllo di licenze software
