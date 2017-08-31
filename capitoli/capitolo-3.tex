@@ -7,17 +7,64 @@
 \label{cap:ambiente-sviluppo}
 %**************************************************************
 
-Breve introduzione al capitolo
-
+Nel presente capitolo sono illustrate le tecnologie utilizzate per realizzare le soluzioni proposte. Per ogni tecnologia è mostrata una breve descrizione e il suo utilizzo nell'attività di stage.
 %**************************************************************
-\section{Microsoft Visual Studio}
+\section{Microsoft Visual Studio 2010}
+Visual Studio è un ambiente di sviluppo integrato (\gls{ide}) sviluppato da Microsoft, che supporta diversi tipi di linguaggio, ad esempio C, C++, C\#, F\#, Visual Basic .Net, Html e JavaScript, e che permette la realizzazione di applicazioni, siti web, applicazioni web e servizi web.
+\\
+Tra le funzioni interessanti, Visual Studio integra la tecnologia IntelliSense la quale permette di correggere eventuali errori sintattici (ed alcuni logici) senza compilare l'applicazione, possiede un debugger interno per il rilevamento e la correzione degli errori logici nel codice a runtime e fornisce diversi strumenti per l'analisi prestazionale.
+\\
+A differenza dei compilatori classici, quello disponibile col .NET Framework converte il codice sorgente (Visual Basic .NET, C\#, ecc.) in codice IL (Intermediate Language).
+IL è un nuovo linguaggio progettato per essere convertito in modo efficiente in codice macchina nativo su differenti tipi di dispositivi. Intermediate Language è un linguaggio di livello più basso rispetto a Visual Basic .NET o C\#, ma è a un livello di astrazione più alto rispetto ai linguaggi assembly o linguaggi macchina.
+\\
+La versione del programma utilizzata durante lo stage è Visual Studio 2010, creato per programmatori che sviluppano per piattaforme Windows e .NET Framework 4.0. Rispetto ai suoi predecessori offre la possibilità di creare applicazioni e servizi Web ASP.NET, in C\# o in VB.NET. È stato distribuito il 12 aprile 2010. 
+\\
+Il linguaggio di programmazione utilizzato durante lo stage è il C\#.
 
-\subsection{C Sharp}
+\subsection{C\#}
+Il C\# è un linguaggio di programmazione orientato agli oggetti sviluppato da Microsoft all'interno dell'iniziativa .NET, e successivamente approvato come standard dalla Ecma (ECMA-334) e ISO (norma ISO/IEC 23270).
 
-\section{ASP.NET}
+La sintassi e struttura del C\# prendono spunto da vari linguaggi nati precedentemente, in particolare Delphi, C++, Java e Visual Basic. Il risultato è un linguaggio con meno simbolismo rispetto a C++, meno elementi decorativi rispetto a Java, ma comunque orientato agli oggetti in modo nativo e adatto allo sviluppo di una vasta gamma di software.
 
-\section{SQLServer}
+C\# è stato creato da Microsoft specificatamente per la programmazione nel Framework .NET. I suoi tipi di dati "primitivi" hanno una corrispondenza univoca con i tipi .NET e molte delle sue astrazioni, come classi, interfacce, delegati ed eccezioni, sono particolarmente adatte a gestire il .NET framework.
 
-\section{IIS}
 
-\section{Microsoft Visual Fox Pro}
+\subsection{Utilizzo nel progetto}
+
+All'interno del progetto l'IDE Microsoft Visual Studio, utilizzando il linguaggio C\#, è stato utilizzato per realizzare tutte le soluzioni, da License Manager 1.0, ai Web Service, fino ai moduli da integrare nel Software Gestionale Vision. 
+
+\section{Web Service in ASP.NET}
+
+ASP.NET è un insieme di tecnologie di sviluppo di software per il web, commercializzate da Microsoft. Utilizzando queste tecnologie, tramite uno qualsiasi dei linguaggi di alto livello supportati dal framework .NET, come, ad esempio, Visual Basic o C\#, gli sviluppatori possono realizzare applicazioni web e Web Service.
+Nel progetto in esame è stato utilizzato il linguaggio C\#{}.
+
+\subsection{Utilizzo nel progetto}
+
+Per la realizzazione delle soluzioni, è stata creata la Web App \texttt{WebLicenseManager} in ASP.NET al solo scopo di contenere i Web Service \texttt{LicenseManagerService}, \texttt{LicenseEmailService} e \texttt{LicenseSecurityService} (TODO ILLUSTRATI NELLA SEZIONE..), senza fornire alcuna funzionalità. Questa metodologia di sviluppo è stata attuata poiché Microsoft Visual Studio 2010 non permette la creazione di Web Service se non contenuti in una Web App.\\
+I Web Service creati sono scritti in linguaggio C\#.
+
+\section{Microsoft SQL Server}
+
+Microsoft SQL Server è un (TODO GLOSSARIO)DBMS relazionale sviluppato da Microsoft. Classificato come server database è un Software con la funzione principale di immagazzinare e ritirare dati in base alle richieste ricevute da altre applicazioni. Esse possono essere eseguite sullo stesso computer o su una qualsiasi macchina connessa alla rete.
+\\
+Microsoft ha sviluppato molte versioni dello stesso prodotto per soddisfare le diverse richieste degli utenti. Nel progetto in esame è stata utilizzata la versione Microsoft SQL Server 2008 R2, pensato appositamente per contesi aziendali, permettendo una grande capacità di immagazzinamento, e in grado di collaborare perfettamente con Microsoft Visual Studio.
+
+\subsection{Utilizzo nel progetto}
+
+Nel contesto del progetto è stato utilizzato per sviluppare il Database DBLicenze, illustrato nel dettaglio nella sezione \ref{sez:DBLic}.
+
+\section{Microsoft IIS}
+
+Microsoft Internet Information Services, abbreviato in IIS, è un complesso di servizi server Internet per sistemi operativi Microsoft Windows.
+IIS è utilizato per ospitare una grande varietà di servizi web, dal Media Streaming alle applicazioni Web. Con IIS Manager è possibile gestire le proprietà delle applicazioni e siti web ospitati, con la possibilità di impostare i protocolli da utilizzare nella connessione, ad esempio FTP, HTTP o HTTPS. 
+La versione utilizzata nel corso dello stage è IIS 7.5, installata su sistema operativo Windows Server 2008 R2.
+
+
+\subsection{Utilizzo nel progetto}
+All'interno del progetto IIS è stato utilizzato per pubblicare l'applicazione Web \texttt{WebLicenseManager} contenente i Web Service sviluppati per soddisfare le richieste dello stage. Tramite IIS Manager è stato possibile impostare la connessione ai Web Service tramite protocollo (glossario)HTTPS, fornendo un alto livello di sicurezza nella comunicazione Client-Server. La connettività HTTPS è stata stabilità grazie all'utilizzo di un certificato già in possesso dall'azienda.
+
+\section{Microsoft Visual FoxPro}
+Visual FoxPro è un linguaggio di programmazione, pubblicato da Microsoft, che integra la programmazione orientata agli oggetti a quella procedurale.
+
+\subsection{Utilizzo nel progetto}
+Nell'ambito dello stage è stato necessario apprendere le basi di Visual FoxPro per capire e poter replicare le procedure di generazione del codice cifrato riepilogativo dei moduli di una licenza, poiché scritte in tale linguaggio di programmazione. Le procedure dovevano essere replicate nel modo più preciso possibile per assicurare la corretta decifratura del codice generato tramite il nuovo sistema. 

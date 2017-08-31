@@ -17,8 +17,14 @@ Ambiente di sviluppo
 	Web Service
 	SQLServer
 
-Sviluppo Software
-	License Manager 1.0
+Basi dello sviluppo Software
+	Web Service
+	DBLicenze
+
+License Manager 1.0
+	
+
+Moduli vision
 	Registrazione di una licenza
 	Avvio Online del software
 	Avvio Offline del software
