@@ -96,7 +96,7 @@ Poiché il controllo è svolto totalmente in locale esso è facilmente aggirabil
 
 \subsection{Caricamento dei moduli di una licenza} 
 Il caricamento dei moduli di una licenza, ossia quali funzioni sono permesse, avviene da un file in formato “.HWK”, generato per mezzo del 
-programma \textit{GenFileKey}, salvato nella cartella del Software Gestionale Vision. Esso contiene un codice cifrato, visibile all’utente, riepilogativo dei moduli attivi della licenza. Questo file può essere aperto con qualsiasi editor di testo e facilmente modificato, rischiando di compromettere la licenza.
+programma \textit{GenFileKey}, inviato ai clienti e salvato nella cartella del Software Gestionale Vision. Esso contiene un codice cifrato, visibile all’utente, riepilogativo dei moduli attivi della licenza. Questo file può essere aperto con qualsiasi editor di testo e facilmente modificato, rischiando di compromettere la licenza.
 
 \subsection{Licenze bloccate} 
 
@@ -122,38 +122,98 @@ L'azienda può monitorare lo stato delle licenze attraverso il Software \textit{
 %**************************************************************
 \section{Soluzioni proposte}
 
-In seguito ai punti salienti esaminati in fase d’analisi, sono proposte (TODO per ora brevemente, da approfondire), per punti, le seguenti soluzioni:
+In relazioni alle problematiche analizzate nel precedente paragrafo, sono proposte le seguenti soluzioni. In questa sezione le soluzioni proposte sono trattate sommariamente, per lasciare una definizione completa delle stesse nelle sezioni {\hyperref[cap:sviluppo-software]{Web Service e Database}}, {\hyperref[cap:license-manager]{License Manager 1.0}} e {\hyperref[cap:moduli-vision]{Moduli Software Gestionale Vision}}.
+
+\subsection{Creazione di una licenza}
+
+La creazione delle licenze avviene tramite il Software \textit{License Manager 1.0}, in sostituzione del Software \textit{GenPK}. Il Software riprende le modalità di creazione di \textit{GenPK}, ma elimina il sistema del file contenente i dati delle licenze ottenuto tramite FTP, e si occupa di salvare le licenze create in un Database. Le operazioni di generazione e salvataggio della  licenza sono gestiti tramite Web Service. 
+Il passare da un file condiviso (perennemente a rischio per via dei salvataggi sui PC degli utenti) a un sistema che utilizza un Database per archiviare e ottenere i dati aumenta di molto la sicurezza della gestione delle licenze.
+
+\subsection{Attivazione di una licenza}
+
+L'attivazione di una licenza richiede come nella precedente procedura l'inserimento del \texttt{Product Key} ricevuto in fase d'acquisto, e in seguito, tramite Web Service, è controllato che esso sia disponibile per un'installazione. Le modifiche di stato avvengono nel Database, eliminando di fatto l'utilità del file condiviso tramite FTP e riducendo la possibilità di attacchi. L’\texttt{Activation Key}, utilizzata per il controllo Hardware, è eliminata e rimpiazzata da un nuovo sistema. Il controllo Hardware è ora basato su un insieme di componenti e non solo sul \texttt{MAC Address} della scheda di rete, in modo da permettere all’utente di cambiare alcune delle componenti del pc (ad esempio in caso di guasti) e non dover ricontattare l’azienda per poter continuare a utilizzare il \textit{Software Gestionale Vision}. 
+Infine, nella prima attivazione il cliente dovrà associare un indirizzo email alla propria licenza, in modo che possa disattivare e reinstallare il programma senza il bisogno di dover contattare l’azienda. Associando un indirizzo email l'utente sarà in grado di riutilizzare autonomamente la propria licenza nella reinstallazione del Software, anche qualora sia impossibilitato a disattivarla, come nel caso di guasto o reinstallazione del sistema operativo del PC in cui la licenza era utilizzata.
+
+
+\subsection{Avvio del Software Gestionale Vision}
+
+Come analizzato nelle problematiche, l'unico controllo di validità della licenza all'avvio del Software avveniva in locale, controllando l'\texttt{Activation Key}, ma permettendo di fatto di utilizzare la licenza per un periodo illimitato e in più macchine virtuali grazie alla clonazione. Nel sistema attuale sono stati implementati due  diversi controlli, uno per un accesso senza connessione a Internet e uno per l’accesso con connessione.
+\\
+Il controllo per l’avvio del Software in Offline utilizza informazioni salvate in chiavi di registro per verificare la validità della licenza. È stato realizzato anche un metodo basato sulle firme digitali per verificare l’integrità delle chiavi di registro, così che non possano essere manomesse facilmente. L’utilizzo del programma in Offline è ora permesso per 15 giorni, scaduti i quali sarà chiesto di connettersi a internet.
+\\
+Il controllo all'avvio Online è formato da due procedure:
 \begin{itemize}
-
-\item	Registrazione di una licenza: In primis si vuole eliminare il sistema dei Product Key salvati in un file, scaricato tramite ftp, costantemente a rischio. La generazione dei Product Key riprenderà il metodo di GenPK, ma i Product Key con le relative caratteristiche saranno salvati su un Database, e la Generazione avverrà tramite Web Service. L’Activation Key viene eliminata e si utilizzerà un nuovo sistema di controllo per l’impronta Hardware, basato su un insieme di componenti e non solo sulla scheda di Rete, in modo da permettere all’utente di cambiare alcune delle componenti del pc (ad esempio in caso di guasti) e non dover ricontattare l’azienda per poter continuare a utilizzare il Software Gestionale Vision. Per la creazione dei Product Key sarà creato un nuovo Software, chiamato License Manager 1.0, che permetterà di creare, gestire e monitorare le licenze in tutti i loro aspetti. Il Software utilizzerà Web Services e Database, eliminando la necessità di affidare file ai clienti con il rischio che siano compromessi. In fase di registrazione il cliente assocerà un indirizzo email alla propria licenza, in modo che possa disattivare e reinstallare il programma senza il bisogno di dover contattare l’azienda.
-\item	Avvio del Software Gestionale Vision:  Sono stati pensati due diversi controlli, uno per un accesso senza connessione un per l’accesso con connessione. Il controllo per l’avvio del software in offline utilizzerà informazioni salvate in chiavi di registro per verificare la validità della licenza. E’ stato pensato anche un metodo basato sulle firme digitali per verificare l’integrità delle chiavi di registro. L’utilizzo del programma in offline sarà permesso per 15 giorni, dopo di ché verrà chiesto di connettersi a internet. Il controllo online avviene in due passaggi: uno all’avvio che controlla la validità della licenza in termini di data di scadenza, bloccaggio e componente Hardware, sempre tramite Web Service, e il secondo che si esegue a intervalli regolari di un’ora per verificare che l’utente non stia utilizzando il programma su macchine differenti ma con stesso Hardware (ad esempio clonando una macchina virtuale).
-\item	Caricamento dei moduli della licenza: Il codice cifrato verrà salvato in un database, eliminando la necessità di inviare un file ai clienti, con possibilità che esso venga corrotto. La generazione del file che prima avveniva tramite GenFileKey ora sarà possibile eseguirla da License Manager 1.0.
-\item	Licenze bloccate: salvando i dati della licenza su un database è facile segnalarne il blocco in uno dei suoi campi. Al momento dei controlli quel campo sarà analizzato, e in caso di blocco presente si deciderà che operazione intraprendere. 
-\item	Procedura di disattivazione: associando un indirizzo email alla propria licenza l’utente sarà in grado di disattivare/reinstallare la propria licenza ogni volta che lo vorrà, senza contattare l’azienda e in qualsiasi situazione, anche in caso di rottura del pc o reinstallazione del sistema operativo.
-\item	Scadenza di una licenza: sarà implementato un controllo sulla data di scadenza, sia in offline sia in online. Nel controllo all’avvio del programma sarà anche controllato se la licenza è entrata nell’ultimo mese di validità. In quel caso sarà mostrato un reminder con i giorni rimanenti prima della scadenza. 
-\item	Rivenditori: License Manager 1.0, grazie al suo sistema di utenti, potrà essere distribuito ai rivenditori con utenti di tipo Guest, lasciando loro un certo grado di libertà che non li costringa a rivolgersi all’azienda per ogni decisione. Ogni azione da loro intrapresa sarà comunicata all’azienda tramite email, e tutti gli stati precedenti alle modifiche saranno registrati in una tabella dedicata del database.
-\item	Monitoraggio delle licenze: License Manager 1.0 fornisce un sistema di monitoraggio basato su: visione immediata di tutte le caratteristiche di una licenza, statistiche sulla distribuzione e l’utilizzo delle licenze, log degli accessi al Software Gestionale Vision per notare possibili anomalie.
-
+\item all'avvio, tramite Web Service, è controllata la licenza in termini di data di scadenza, bloccaggio e componente Hardware;
+\item a intervalli di un'ora (tempo riducibile nell'effettiva implementazione del modulo a discrezione dei programmatori) è controllato che l'utente non stia utilizzando il programma su macchine differenti ma con stesso Hardware (ad esempio in seguito a una clonazione di una macchina virtuale).
 
 \end{itemize}
 
+\subsection{Caricamento dei moduli della licenza}
+
+Il codice cifrato riepilogativo dei moduli è ora salvato in un Database, eliminando la necessità di inviare un file ai clienti e la possibilità che esso venga corrotto. La generazione del codice che prima avveniva tramite il Software \textit{GenFileKey} ora è eseguita da \textit{License Manager 1.0}.
+
+\subsection{Licenze bloccate} 
+Il controllo di una licenza bloccata, disponendo di un Database cui il \textit{Software Gestionale Vision} si riferisce per ritirare i dati, è ora immediatamente implementabile controllando il campo dedicato relativo alla licenza ispezionata. L'utente quindi non potrà più utilizzare una licenza bloccata evitando di aggiornare il \textit{Software Gestionale Vision}, e l'azienda non dovrà rilasciare un nuovo aggiornamento per inserire una licenza bloccata nella Blacklist.
+Il blocco è eseguito tramite una funzionalità di \textit{License Manager 1.0}.
+
+\subsection{Procedura di disattivazione}
+
+Grazie all'associazione di un indirizzo email alla propria licenza un utente è ora in grado di disattivare e reinstallare in sicurezza la propria licenza ogni volta che lo desidera, senza dover contattare l’azienda e in qualsiasi situazione. La disattivazione può comunque essere gestita dall'azienda tramite \textit{License Manager 1.0}.
+
+\subsection{Scadenza di una licenza}
+
+Nel nuovo sistema di gestione e controllo delle licenze è stata implementata la data di scadenza, permettendo all'azienda di avere un controllo maggiore sulle proprie licenze e poter modificare il metodo di vendita. È implementato un controllo sulla data di scadenza sia all'avvio in Offline sia in Online. Nel controllo all’avvio del programma è anche controllato che la licenza non sia entrata nell’ultimo mese di validità. In quel caso sarà mostrato un GLOSSARIO \textit{reminder} con i giorni rimanenti prima della scadenza. 
+ 
+\subsection{Rivenditori}
+
+\textit{License Manager 1.0}, grazie al suo sistema di utenti, può essere distribuito ai rivenditori identificandoli con utenti di tipo \texttt{Guest}, lasciando loro un certo grado di libertà che non li costringa a rivolgersi all’azienda per ogni decisione. Ogni azione da loro intrapresa è comunicata all’azienda tramite email, e tutti gli stati precedenti alle modifiche sono registrati in una tabella dedicata del Database. La comunicazione all'azienda delle modifiche apportate dai rivenditori è fondamentale perché l'azienda sia sempre aggiornata sullo stato delle proprie licenze.
+
+\subsection{Monitoraggio delle licenze}
+
+\textit{License Manager 1.0} fornisce un sistema di monitoraggio migliore, basato su:
+\begin{itemize}
+\item visione completa di tutte le caratteristiche di una licenza (ad esempio la data di scadenza, le componenti Hardware associate o i moduli definiti);
+\item statistiche sulla distribuzione e l'utilizzo delle licenze, filtrabili anche per i rivenditori;
+\item log degli accessi al \textit{Software Gestionale Vision} per notare possibili anomalie.
+\end{itemize}
+Grazie al nuovo sistema di monitoraggio l'azienda può visualizzare in ogni momento la situazione delle sue licenze, e avere statistiche per apportare miglioramenti al proprio Software.
+
+
 %**************************************************************
+\newpage
 \section{Pianificazione del Lavoro}
 
 La seguente sezione mostra la pianificazione del lavoro attuata prima di iniziare l'attività di stage e l'effettivo utilizzo delle ore. Per rendere più chiara la pianificazione del lavoro e lo svolgimento effettivo delle attività sono utilizzati Diagrammi di Gantt.
+\newpage
 
 \subsection{Pianificazione antecedente lo stage}
+Nella Figura \ref{primastage} è mostrata la pianificazione dello stage prima di iniziare l'attività. La figura è disposta verticalmente per aumentare la visibilità.
+\\
+\\
 
-TODO METTERE IN VERTICALE
-\begin{figure}[!h] 
-    \centering 
-    \includegraphics[width=0.9\columnwidth]{ganttPrima} 
-    \caption{Diagramma di Gantt - Pianificazione del lavoro}
-\end{figure}
+\rotatebox{90}{\begin{minipage}{0.85\textheight}
+%\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{ganttPrima} 
+    \captionof{figure}{Diagramma di Gantt - Pianificazione del lavoro}
+    \label{primastage}
+    \end{minipage}}
+%\end{figure}
+\newpage
 
 \subsection{Resoconto delle attività svolte}
-
-TODO Diagramma post stage
+Nella Figura \ref{dopostage} è mostrata la suddivisione delle attività effettivamente svolte. Essa si discosta di molto rispetto quanto pianificato prima di iniziare lo stage. Infatti, grazie a un veloce apprendimento e a una buona progettazione, è stato possibile organizzare il tempo a disposizione per realizzare anche gli obiettivi secondari e facoltativi.
+\\
+\\
+\rotatebox{90}{\begin{minipage}{0.85\textheight}
+%\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{effettivostage} 
+    \captionof{figure}{Diagramma di Gantt - Attività svolte}
+    \label{dopostage}
+    \end{minipage}}
+%\end{figure}
+\newpage
 
 %**************************************************************
 \section{Obiettivi e Requisiti}
