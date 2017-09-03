@@ -219,21 +219,36 @@ Nella Figura \ref{dopostage} è mostrata la suddivisione delle attività effetti
 \section{Obiettivi e Requisiti}
 
 \subsection{Obiettivi}
-Nella fase preliminare dello stage sono stati delineati i seguenti obiettivi, in ordine di importanza. Gli obiettivi sono identificati da un codice così composto: XXYY dove XX rappresenta la tipologia dell'obiettivo (es. OP obiettivo primario) e YY è un numero progressivo.
-Le sigle sono queste.. TODO: sigle, espandere e spiegare nel dettaglio gli obiettivi.
+Nella fase preliminare dello stage sono stati delineati i seguenti obiettivi, in ordine di importanza. Gli obiettivi sono identificati da un codice così composto:
+$$ XXYY $$
+
+dove XX rappresenta la tipologia dell'obiettivo e YY è un numero progressivo utilizzato per differenziare gli obiettivi della stessa categoria.
+\\
+Le sigle utilizzate sono le seguenti:
+
+\begin{itemize}
+\item \textbf{OP:} obiettivo primario;
+\item \textbf{OS:} obiettivo secondario;
+\item \textbf{OF:} obiettivo facoltativo;
+\item \textbf{FO:} obiettivo formativo.
+\end{itemize}
+
+Gli obiettivi identificati sono così suddivisi:
+
 \begin{itemize}
 
 \item \textbf{obiettivi primari:}\begin{itemize}
 \item OP01: definizione delle strategie risolutive per le problematiche presentate;
-\item OP02: implementazione di un sistema di attivazione/disattivazione licenze via web services.
+\item OP02: implementazione di un sistema di attivazione e disattivazione delle licenze via web services;
+\item OP03: implementazione di controlli per la validità di una licenza.
 \end{itemize}
 \item \textbf{obiettivi secondari:}\begin{itemize}
-\item OS1: implementazione della data di scadenza di una licenza e relativi controlli (prototipo da completare).
+\item OS1: implementazione della data di scadenza di una licenza e relativi controlli.
 \end{itemize}
 \item \textbf{obiettivi facoltativi:}\begin{itemize}
-\item OF01: implementazione licenze per moduli;
-\item OF02: raccolta dati sull’attivazione delle licenze e loro utilizzo;
-\item OF03: creazione dashboard con statistiche e alert su licenze in uso, disattivate, anomalie.
+\item OF01: implementazione delle licenze per moduli;
+\item OF02: raccolta dei dati sull’attivazione delle licenze e sul loro utilizzo;
+\item OF03: creazione di una dashboard con statistiche e alert sulle licenze in uso, disattivate, e anomalie.
 \end{itemize}
 \item \textbf{obiettivi formativi:}\begin{itemize}
 \item FO01: acquisizione di competenze utili allo sviluppo di software gestionale;
@@ -243,20 +258,135 @@ Le sigle sono queste.. TODO: sigle, espandere e spiegare nel dettaglio gli obiet
 
 \end{itemize}
 
-Durante lo svolgimento dello stage, dopo aver raggiunto tutti gli obiettivi prefissati, è stato posto come obiettivo ultimo la distribuzione del Software License Manager 1.0 anche ai rivenditori dell'azienda.
+Durante lo svolgimento dello stage, oltre alla creazione e all'attivazione di una licenza, è stato deciso di sviluppare il Software \textit{License Manager 1.0} per gestirne tutti gli aspetti. Dopo aver raggiunto tutti gli obiettivi prefissati, è stato posto come obiettivo ultimo la distribuzione del Software \textit{License Manager 1.0} anche ai rivenditori dell'azienda per concedere loro un certo grado di libertà nella creazione e nella modifica delle licenze. 
 
 \subsection{Requisiti}
 
 In relazione agli obiettivi presentati nel paragrafo precedente, sono stati identificati i requisiti riportati in seguito.
 
 \subsubsection{Requisiti OP01}
-Per raggiungere una completa (riassunto dell'obiettivo) sono stati identificati i seguenti requisiti:
-descrizione dei requisiti da soddisfare per raggiungere l'obiettivo.
+Per definire una valida strategia risolutiva per le problematiche presentate sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item deve essere svolta un'analisi dettagliata del sistema di gestione delle licenze in uso, per analizzarne criticità e debolezze;
+\item deve essere affrontato un periodo di formazione sulle tecnologie da utilizzare, per comprenderne al meglio le potenzialità;
+\item devono essere delineate, e approvate dal tutor aziendale, delle soluzioni in grado di risolvere tutte le problematiche presentate.
+
+\end{itemize}
+
 \subsubsection{Requisiti OP02} 
 Per implementare un efficiente sistema di attivazione sono stati identificati i seguenti requisiti:
 \begin{itemize}
-\item l'utente finale deve poter inserire all'avvio del Software Gestionale Vision il Product Key, ricevuto in fase d'acquisto, relativo alla licenza per lui creata;
-\item il Product Key inserito deve essere controllato tramite un metodo di un Web Service, che provvederà a verificare la disponibilità dello stesso e a impostare le informazioni di attivazione della licenza nella tabella \texttt{Licenze} del database \texttt{DBLicenze};
+\item deve essere possibile creare un \texttt{Product Key}, secondo le modalità già in uso, da salvare in un Database, eliminando il sistema del file contenente i dati delle licenze, condiviso tramite FTP;
+\item l'utente finale deve poter inserire all'avvio del \textit{Software Gestionale Vision} il \texttt{Product Key}, ricevuto in fase d'acquisto, relativo alla licenza per lui creata;
+\item il \texttt{Product Key} inserito deve essere controllato tramite un metodo di un Web Service, che provvederà a verificare la disponibilità dello stesso e a impostare le informazioni di attivazione della licenza nella tabella \texttt{Licenze} del database \texttt{DBLicenze};
 \item il modulo di attivazione, alla risposta del Web Method, deve impostare le chiavi di registro necessarie per il controllo della licenza in modalità Offline;
-\item ecc...
+\item il modulo di attivazione deve essere in grado di riconoscere se la licenza che si sta attivando è già attiva in un altro computer. In caso positivo, tramite la verifica via email, può disattivarla per attivarla sulla macchina corrente;
+\item il modulo di attivazione deve essere in grado di riconoscere se la licenza che si sta attivando è attualmente attiva sul computer corrente, riconoscendo le componenti Hardware ma non trovando i riferimenti dell'attivazione della licenza. In caso positivo, tramite la verifica via email, può procedere con la riattivazione;
+\item il modulo di attivazione deve essere in grado di bloccare l'attivazione di una licenza in caso di anomalie (ad esempio se una licenza è bloccata);
+
 \end{itemize} 
+
+Per implementare un efficiente sistema di disattivazione sono stati identificati i seguenti requisiti:
+
+
+\begin{itemize}
+\item il modulo di disattivazione deve leggere le chiavi di registro contenenti i riferimenti della licenza, per sapere quale licenza si vuole disattivare;
+\item il modulo deve verificare che l'utente sia autorizzato a disattivare la licenza tramite il controllo via email;
+\item il modulo deve procedere con la disattivazione invocando un metodo di un Web Service.
+\end{itemize}
+
+\subsubsection{Requisiti OP03}
+
+Per implementare un efficiente sistema di controllo della validità di una licenza sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Online, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere eseguito tramite Web Service; 
+\item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Offline, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere svolto in locale tramite l'utilizzo di chiavi di registro;
+\item deve essere implementato un controllo, che si ripete durante l'esecuzione del \textit{Software Gestionale Vision}, per verificare che la licenza sia in uso su una solo computer per volta, anche in caso di computer identici come macchine virtuali clonate. Il controllo eve essere eseguito tramite Web Service.
+\end{itemize}
+
+\subsubsection{Requisiti OS01}
+
+Per correlare a una licenza la data di scadenza, con i relativi controlli, sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item tra i campi di un record licenza, salvato nel Database, deve essere presente la data di scadenza;
+\item il Software di gestione delle licenze deve essere in grado di impostare e modificare la data di scadenza di una licenza;
+\item all'avvio del \textit{Software Gestionale Vision}, sia in modalità Online che Offline, deve essere controllato che la licenza non sia scaduta;
+\item all'avvio del \textit{Software Gestionale Vision}, se la licenza è nell'ultimo mese di scadenza il cliente viene avvisato, per dargli la possibilità di estendere la validità.
+\end{itemize}
+
+\subsubsection{Requisiti OF01}
+
+Per implementare efficacemente la gestione dei moduli di una licenza sono stati identificati i seguenti requisti:
+
+\begin{itemize}
+\item il Software di gestione delle licenze, \textit{License Manager 1.0}, deve dare la possibilità di scegliere e impostare i moduli di una licenza per ogni tipologia;
+\item il codice cifrato riepilogativo dei moduli di una licenza deve essere generato come in \textit{GenFileKey}, per assicurare la compatibilità della soluzione;
+\item il codice generato deve essere salvato all'interno di un Database, per evitare che sia disponibile all'utente, riducendo i rischi di sicurezza.
+
+\end{itemize}
+
+\subsubsection{Requisiti OF02}
+
+Per raccogliere dati sull'attivazione delle licenze e sul loro utilizzo sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item \textit{License Manager 1.0} deve mostrare all'utente il numero di licenze attivate per tipologia;
+\item \textit{License Manager 1.0} deve mostrare all'utente il numero di licenze attivate negli ultimi tre anni;
+\item \textit{License Manager 1.0} deve permettere agli utenti Admin di visualizzare i dati sulle attivazioni anche in relazione ai rivenditori.
+\end{itemize}
+
+
+\subsubsection{Requisiti OF03}
+
+Per implementare una dashboard con statistiche e alert sulle licenze in uso sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+
+\item \textit{License Manager 1.0} deve mostrare statistiche utili, come il numero di licenze bloccate, disattivate, scadute o in scadenza;
+\item il modulo di avvio del \textit{Software Gestionale Vision} deve tener traccia degli accessi di un utente, registrando i dati in un apposita tabella del Database. \textit{License Manager 1.0} deve mostrare tali accessi;
+\item gli accessi multipli di una licenza, ad esempio da diversi IP o da diversi MAC Address, devono essere evidenziati da \textit{License Manager 1.0}.
+
+\end{itemize}
+\subsubsection{Requisiti FO01}
+
+Per acquisire competenzi utili allo sviluppo di Software gestionale sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item è necessario intraprendere un periodo di formazione riguardo il \textit{Software Gestionale Vision};
+\item è necessario intraprendere un periodo di formazione riguardo i Software di ausilio al \textit{Software Gestionale Vision}, come \textit{GenPK} e \textit{GenFileKey};
+\item è necessario analizzare alcune soluzioni sviluppate dai programmatori dell'azienda in contesti simili.
+\end{itemize}
+
+\subsubsection{Requisiti FO02}
+
+Per interagire al meglio con il team di lavoro sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item è necessario cercare autonomamente possibili soluzioni prima di chiedere aiuto riguardo qualsiasi problematica;
+\item è necessario interrogare il team per decisioni importanti o che potrebbero compromettere le funzionalità di un sistema già in uso;
+\item è importante saper valutare la frequenza con cui chiedere aiuto, sia per non disturbare il lavoro altrui sia per non rallentare troppo il proprio.
+\end{itemize}
+
+\subsubsection{Requisiti FO03}
+
+Per ottenere capacità decisionali sulle tecnologie da utilizzare in diversi contesti sono stati identificati i seguenti requisiti:
+
+\begin{itemize}
+\item è necessario approfondire le possibilità di più tecnologie prima di scegliere quale utilizzare;
+\item è necessario effettuare dei test per verificare sommariamente che quanto progettato sia effettivamente realizzabile;
+\item è necessario attingere informazioni da più fonti per avere una vista più ampia su quali tecnologie possano essere utili allo scopo. 
+\end{itemize}
+
+\subsection{Requisiti \textit{License Manager 1.0}}
+
+I requisiti identificati per \textit{License Manager 1.0} sono i seguenti:
+
+\begin{itemize}
+\item il Software deve fornire la possibilità di gestire tutti gli aspetti di una licenza, dalla creazione alla modifica, fino all'eliminazione;
+\item il Software deve offire il monitoraggio delle licenze su diversi fronti;
+\item il Software deve utilizzare Web Service e Database per svolgere le operazioni;
+\item il Software deve essere distribuito ai rivenditori con funzionalità limitate, per preservare la sicurezza dell'azienda.
+\end{itemize}
