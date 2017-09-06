@@ -467,8 +467,60 @@ Nei paragrafi successivi sono mostrate nel dettaglio tutte le funzionalità.
 
 \subsection{Aggiungi}
 
+
+La funzione "Aggiungi" permette di creare un nuovo utente. La finestra che si presenta è mostrata in Figura \ref{agg}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.4\columnwidth]{LicenseManager/aggut} 
+    \caption{License Manager 1.0 - Creazione di un utente}
+\label{agg}
+
+\end{figure}
+
+I campi Username ed Email sono obbligatori.
+\begin{itemize}
+\item \textbf{Username:} identifica univocamente un utente, credenziale necessaria per l’accesso;
+\item \textbf{Email:} lega un utente a una mail, che sarà utilizzata sia per l’invio della password da utilizzare per il primo accesso sia per le notifiche di creazione di nuove licenze da parte di un rivenditore.
+\end{itemize}
+Il campo \texttt{Admin}, se selezionato, identifica l’utente come \textit{Admin}, fornendone tutti i privilegi.\\
+Il \texttt{Codice Utente} è deciso manualmente alla creazione o in seguito attraverso la funzione di modifica utente, e serve per identificare un utente con il proprio codice rivenditore. Più utenti possono avere lo stesso \texttt{Codice Utente}, e saranno quindi in grado di gestire le stesse licenze. Gli \textit{Admin} hanno il \texttt{Codice Utente} sempre impostato a "CODICEADMIN", il che gli differenzia dagli altri utenti \textit{Guest}.\\
+Dopo aver salvato l’utente, tramite l'utilizzo del Web Service \texttt{LicenseManagerService} è inviata una Mail all’indirizzo scelto contenente l’username e la password da utilizzare per il primo accesso. Dopo l’accesso, è richiesto l’inserimento di una nuova password per questioni di sicurezza.
+
+
 \subsection{Modifica}
+
+La funzione "Modifica" permette di modificare un utente. La finestra che si presenta è mostrata in Figura \ref{mod}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.4\columnwidth]{LicenseManager/modut} 
+    \caption{License Manager 1.0 - Modifica di un utente}
+\label{mod}
+
+\end{figure}
+
+Con questo Form può essere modificato l’username, l'indirizzo email associato all’account e fornire o rimuovere i privilegi di \textit{Admin}. Qualora l’utente sia un \textit{Admin} non è possibile scegliere un \texttt{Codice Utente} poiché sarà impostato di default a "CODICEADMIN".
 
 \subsection{Reset password}
 
+La funzione "Reset password" permette all’utente selezionato di poter reimpostare la password alla prossima autenticazione. Il reset della password deve avvenire sempre tramite il permesso di un \textit{Admin}, e non sono previsti altri metodi.
+\\
+Per resettare la password qualora l’utente non ricordasse la vecchia, è sufficiente inserire l’\texttt{Username} nel campo apposito del Form di autenticazione e cliccare su "Password dimenticata?".\\
+È possibile per un Admin resettare la propria password seguendo la stessa procedura, scegliendone una nuova al prossimo accesso.
+\\
+In Figura \ref{reset} è mostrato il processo di reset della password tramite il Form di autenticazione.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1\columnwidth]{LicenseManager/reset} 
+    \caption{License Manager 1.0 - Reset della password di un utente}
+\label{reset}
+
+\end{figure}
+
+
+\newpage
 \subsection{Elimina}
+
+La funzione "Elimina" permette di eliminare un utente di \textit{License Manager 1.0}, tranne se stessi. Per eliminare un \textit{Admin} è necessario svolgere l’operazione da un altro account \textit{Admin}. Poiché l’eliminazione è sempre permessa, si consiglia di limitare al minimo il numero di utenti \textit{Admin} presenti.
