@@ -38,14 +38,14 @@ Poiché il programma si propone di gestire diverse tipologie di utenti è stato 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.5\columnwidth]{LicenseManager/auth} 
-    \caption{License Manager 1.0 - Form di autenticazione}
+    \caption{License Manager 1.0 - Form di autenticazione.}
     \label{auth}
 \end{figure}
 
 L’utente, per accedere, deve inserire il proprio \texttt{Username} e la \texttt{Password}, e cliccare su "Accedi".\\
 Solo gli \textit{Admin} possono creare gli utenti, scegliendone l’username, un indirizzo email da associare, e nel caso l’utente sia destinato a un rivenditore è data la possibilità di sceglierne il \texttt{Codice Utente} (o codice rivenditore).
 Un utente che ha dimenticato la password è costretto a contattare un \textit{Admin} per chiederne il reset. Se l’\textit{Admin} concede il reset della password, inserendo l’\texttt{Username} e cliccando su "Password dimenticata?" è possibile impostare una nuova Password.\\
-Per maggiori dettagli sulla gestione degli utenti si rimanda alla sezione X.X9 “Amministra utenti”.
+Per maggiori dettagli sulla gestione degli utenti si rimanda alla sezione \ref{ammut}.
 \newpage
 
 
@@ -56,7 +56,7 @@ Dopo l'autenticazione, il programma si mostra come in Figura \ref{primscher}.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{LicenseManager/primaSchermata} 
-    \caption{License Manager 1.0 - Prima schermata all'avvio}
+    \caption{License Manager 1.0 - Prima schermata all'avvio.}
     \label{primscher}
 \end{figure}
 
@@ -71,7 +71,7 @@ Dopo l'autenticazione, il programma si mostra come in Figura \ref{primscher}.
 
 \end{itemize}
 
-In basso a sinistra è riportato l’utente con cui si è acceduti.
+In basso a sinistra è riportato l’utente che ha effettuato l'accesso.
 \\
 Tutte le sezioni saranno spiegate nel dettaglio nei prossimi paragrafi.
 
@@ -83,7 +83,7 @@ La sezione "Gestione Licenze" è la prima a mostrarsi dopo l'autenticazione. \\ 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/gestLic} 
-    \caption{License Manager 1.0 - Gestione Licenze}
+    \caption{License Manager 1.0 - Gestione Licenze.}
 \label{gestLic}
 \end{figure}
 
@@ -107,7 +107,7 @@ Nella parte alta della schermata sono presenti le funzionalità, mentre nella pa
 \\
 Un \textit{Admin} può visualizzare tutte le licenze, ed eventualmente filtrarle per \texttt{Codice Utente} per visualizzare le licenze assegnate a un rivenditore.
 \\
-Un \textit{Guest} (o rivenditore), può visualizzare solo le licenze con \texttt{Codice Utente} uguale al proprio.
+Un \textit{Guest} (o rivenditore) può visualizzare solo le licenze con \texttt{Codice Utente} uguale al proprio.
 \\
 
 In generale, prima che avvenga una modifica a una licenza (o l'eliminazione), tramite l'utilizzo del Web Service \texttt{LicenseManagerService}, è salvato il suo stato attuale nella tabella \texttt{StoricoStatiLicenze} per avere lo storico completo di tutte le licenze. Inoltre, se la modifica è stata apportata da un \textit{Guest}, essa è notificata all'azienda tramite l'utilizzo del Web Service \textit{LicenseEmailService} per mantenere l'azienda informata sullo stato di tutte le licenze. 
@@ -119,7 +119,7 @@ La funzione “Aggiungi” permette di creare una nuova licenza. Il metodo di cr
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.55\columnwidth]{LicenseManager/creaLicenza} 
-    \caption{Finestra Aggiungi - Gestione Licenze}
+    \caption{Finestra Aggiungi - Gestione Licenze.}
     \label{crealic}
 \end{figure}
 
@@ -146,7 +146,7 @@ Dopo aver scelto Tipologia e Serial Number è necessario cliccare su "Genera Cre
  \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.55\columnwidth]{LicenseManager/salva} 
-    \caption{License Manager 1.0 - Salvataggio di una licenza appena creata}
+    \caption{License Manager 1.0 - Salvataggio di una licenza appena creata.}
 \label{salva}
 \end{figure}
 
@@ -157,7 +157,7 @@ Prima di procedere con il salvataggio è possibile definire delle informazioni a
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/creaPDFInfoAggi} 
-    \caption{License Manager 1.0 - Informazioni aggiuntive e creazione file PDF}
+    \caption{License Manager 1.0 - Informazioni aggiuntive e creazione file PDF.}
 \label{pdf}
 \end{figure}
 
@@ -172,7 +172,7 @@ Infine, se la creazione è andata a buon fine, è mostrato un messaggio che lo c
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.85\columnwidth]{LicenseManager/nuovalicenza} 
-    \caption{License Manager 1.0 - Aggiunta alla lista di una licenza appena creata}
+    \caption{License Manager 1.0 - Aggiunta alla lista di una licenza appena creata.}
 \label{nuova}
 \end{figure}
 
@@ -185,7 +185,7 @@ La funzione "Modifica" permette di modificare i dati non immutabili di una licen
 \item \textbf{Cliente:} nome del cliente, utilizzato per comodità per riferirsi a una licenza;
 \item \textbf{Email:} indirizzo email associato alla licenza. Tramite l’indirizzo email il cliente può disattivare e riattivare la propria licenza senza che sia necessario contattare l’azienda. Per questo motivo ai \textit{Guest} non è data la possibilità di modificare l’email decisa dai clienti in fase di attivazione;
 \item \textbf{Codice Utente:} codice del rifornitore cui è assegnata la licenza. Un rifornitore sarà in grado di vedere solo le licenze con il codice utente uguale a quello a lui assegnato. Per questo motivo anche il \texttt{Codice Utente} non può essere modificato dai rifornitori.
-Gli \textit{Admin}, invece, possono vedere tutte le licenze e modificarne il \texttt{Codice Utente}, a meno che la licenza non sia impostata come "Licenza ad uso interno non rivendibile". Riferirsi alla sezione x.x per ulteriori informazioni.
+Gli \textit{Admin}, invece, possono vedere tutte le licenze e modificarne il \texttt{Codice Utente}, a meno che la licenza non sia impostata come "Licenza ad uso interno non rivendibile". Riferirsi alla sezione \ref{gestmod} per ulteriori informazioni.
 \end{itemize} 
 
 In Figura \ref{modifica} è mostrata la schermata di modifica.
@@ -193,7 +193,7 @@ In Figura \ref{modifica} è mostrata la schermata di modifica.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.6\columnwidth]{LicenseManager/modifica} 
-    \caption{License Manager 1.0 - Modifica di una licenza}
+    \caption{License Manager 1.0 - Modifica di una licenza.}
 \label{modifica}
 \end{figure}
 
@@ -205,7 +205,7 @@ Il Form relativo è mostrato in Figura \ref{estendi}.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.45\columnwidth]{LicenseManager/Estendi} 
-    \caption{License Manager 1.0 - Estensione del periodo di validità di una licenza}
+    \caption{License Manager 1.0 - Estensione del periodo di validità di una licenza.}
 \label{estendi}
 \end{figure}
 
@@ -219,7 +219,7 @@ Nella Figura \ref{block} si può vedere un esempio di licenza bloccata.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.8\columnwidth]{LicenseManager/bloccate} 
-    \caption{License Manager 1.0 - Licenza bloccata}
+    \caption{License Manager 1.0 - Licenza bloccata.}
 \label{block}
 \end{figure}
 
@@ -231,7 +231,7 @@ Come si vede nella Figura \ref{sblocca}, accedendo con un utente di tipo \textit
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.8\columnwidth]{LicenseManager/sblocca} 
-    \caption{License Manager 1.0 - Sblocco di una licenza}
+    \caption{License Manager 1.0 - Sblocco di una licenza.}
 \label{sblocca}
 \end{figure}
 
@@ -242,7 +242,7 @@ Nella Figura \ref{elim} l’utente \textit{Guest} "ProvaLT", tentando l’elimin
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.8\columnwidth]{LicenseManager/elimin} 
-    \caption{License Manager 1.0 - Eliminazione di una licenza}
+    \caption{License Manager 1.0 - Eliminazione di una licenza.}
 \label{elim}
 \end{figure}
 
@@ -252,14 +252,14 @@ La funzione "Disassocia" permette di dissociare una licenza dalla sua componente
 Dissociando una licenza dalla sua componente Hardware se ne permette la reinstallazione in una nuova macchina, mentre su quella attuale all’avvio del \textit{Software Gestionale Vision} risulterà che la licenza non è più associata a quel dispositivo.
 
 \subsection{Gestione Moduli}
-
+\label{gestmod}
 La funzione "Gestione Moduli" permette di selezionare quali moduli associare a una licenza. Sia \textit{Admin} che \textit{Guest} possono selezionare i moduli, ma con delle differenze: gli \textit{Admin} possono modificare i moduli un qualsiasi numero di volte, mentre i \textit{Guest} possono impostarli solo una volta dopo la creazione, dopodiché la modifica non sarà più permessa. Se i moduli sono già stati definiti da un \textit{Admin} allora il \textit{Guest} non potrà modificarli.
 Cliccando su "Gestione Moduli", in base alla tipologia della licenza, si apre una nuova finestra che si presenta come nella Figura \ref{gest}.
 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{LicenseManager/gestmoduli} 
-    \caption{License Manager 1.0 - Gestione dei moduli di una licenza}
+    \caption{License Manager 1.0 - Gestione dei moduli di una licenza.}
 \label{gest}
 \end{figure}
 
@@ -269,7 +269,7 @@ Una volta scelti i moduli è necessario cliccare su "Genera Codice" per generare
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{LicenseManager/codgen} 
-    \caption{License Manager 1.0 - Creazione del codice moduli}
+    \caption{License Manager 1.0 - Creazione del codice moduli.}
 \label{codcreat}
 \end{figure}
 
@@ -291,7 +291,7 @@ La schermata mostrata è visibile nella Figura \ref{info}.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.7\columnwidth]{LicenseManager/ultInfo} 
-    \caption{License Manager 1.0 - Creazione del codice moduli}
+    \caption{License Manager 1.0 - Creazione del codice moduli.}
 \label{info}
 \end{figure}
 
@@ -327,7 +327,7 @@ In Figura \ref{espinv} è possibile vedere una situazione esempio della sezione.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/esportainvia} 
-    \caption{License Manager 1.0 - Sezione Esporta ed Invia}
+    \caption{License Manager 1.0 - Sezione Esporta ed Invia.}
 \label{espinv}
 \end{figure}
 
@@ -354,7 +354,7 @@ Il file modello è simile a quello mostrato in Figura \ref{modello}.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.7\columnwidth]{LicenseManager/modello} 
-    \caption{Modello riepilogativo di una licenza}
+    \caption{Modello riepilogativo di una licenza.}
 \label{modello}
 
 \end{figure}
@@ -385,7 +385,7 @@ In Figura \ref{stat} è possibile vedere una situazione esempio della sezione.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/statistiche} 
-    \caption{License Manager 1.0 - Sezione Statistiche}
+    \caption{License Manager 1.0 - Sezione Statistiche.}
 \label{stat}
 
 \end{figure}
@@ -416,7 +416,7 @@ In Figura \ref{accessi} è possibile vedere una situazione esempio della sezione
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/logAccessi} 
-    \caption{License Manager 1.0 - Sezione Log Accessi}
+    \caption{License Manager 1.0 - Sezione Log Accessi.}
 \label{accessi}
 
 \end{figure}
@@ -433,7 +433,7 @@ Il funzionamento illustrato in precedenza è mostrato nella Figura \ref{multip}.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/multip} 
-    \caption{License Manager 1.0 - Selezione delle licenze con multipli IP e MAC Address}
+    \caption{License Manager 1.0 - Selezione delle licenze con multipli IP e MAC Address.}
 \label{multip}
 
 \end{figure}
@@ -443,13 +443,13 @@ Gli accessi al \textit{Software Gestionale Vision} sono ottenuti tramite l'utili
 
 %**************************************************************
 \section{Amministra Utenti}
-
+\label{ammut}
 La sezione "Amministra utenti" è visibile ai soli utenti \textit{Admin} e permette di gestire gli utenti del programma \textit{License Manager 1.0}.\\
 In Figura \ref{amm} è possibile vedere una situazione esempio della sezione.
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{LicenseManager/amministra} 
-    \caption{License Manager 1.0 - Sezione Amministra Utenti}
+    \caption{License Manager 1.0 - Sezione Amministra Utenti.}
 \label{amm}
 
 \end{figure}
@@ -473,7 +473,7 @@ La funzione "Aggiungi" permette di creare un nuovo utente. La finestra che si pr
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.4\columnwidth]{LicenseManager/aggut} 
-    \caption{License Manager 1.0 - Creazione di un utente}
+    \caption{License Manager 1.0 - Creazione di un utente.}
 \label{agg}
 
 \end{figure}
@@ -495,7 +495,7 @@ La funzione "Modifica" permette di modificare un utente. La finestra che si pres
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.4\columnwidth]{LicenseManager/modut} 
-    \caption{License Manager 1.0 - Modifica di un utente}
+    \caption{License Manager 1.0 - Modifica di un utente.}
 \label{mod}
 
 \end{figure}
@@ -514,7 +514,7 @@ In Figura \ref{reset} è mostrato il processo di reset della password tramite il
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{LicenseManager/reset} 
-    \caption{License Manager 1.0 - Reset della password di un utente}
+    \caption{License Manager 1.0 - Reset della password di un utente.}
 \label{reset}
 
 \end{figure}

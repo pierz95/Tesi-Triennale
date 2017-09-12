@@ -20,7 +20,7 @@ I rischi analizzati sono divisi per area di competenza, e per ognuno di essi è 
 \begin{itemize}
 	\item livello tecnologico
 	\begin{itemize}
-		\item \textbf{Tecnologie sconosciute:} L'utilizzo di tecnologie sconosciute, come i servizi di Microsoft, potrebbero portare a ritardi o a difficoltà nello svolgimento del progetto. Tuttavia, grazie al periodo di apprendimento pianificato nel primo periodo dello stage e grazie alla presenza di programmatori esperti nel settore con cui confrontarsi, questo rischio non dovrebbe presentarsi;
+		\item \textbf{Tecnologie sconosciute:} L'utilizzo di tecnologie sconosciute, come i servizi di Microsoft, potrebbe portare a ritardi o a difficoltà nello svolgimento del progetto. Tuttavia, grazie al periodo di apprendimento pianificato nel primo periodo dello stage, e grazie alla presenza di programmatori esperti nel settore con cui confrontarsi, questo rischio non dovrebbe presentarsi;
 		\item \textbf{Guasti hardware:} Durante lo svolgimento dello stage è possibile che la strumentazione utilizzata, in particolare il computer assegnato, possa incorrere in guasti hardware rischiando rallentamenti e perdita del lavoro. Per scongiurare questo evento, una copia delle soluzioni è salvata regolarmente in una cartella del server dell'azienda destinata allo studente.   
 	\end{itemize}
 	\item livello organizzativo
@@ -86,7 +86,7 @@ Il meccanismo dell'attacco è semplice, ed è illustrato nei seguenti passaggi:
 \item l'utente procede con l'attivazione del secondo \texttt{Product Key}, ma prima di terminare l'operazione il file contenente i dati delle licenze viene modificato, impostando lo stato del primo \texttt{Product Key} a "da attivare";
 \item il primo \texttt{Product Key} è quindi disponibile per una nuova installazione.
 \end{enumerate}
-Questo tipo di attacco è permesso per due motivi. In primo luogo il file contenente i dati delle licenze è salvato sul PC dell'utilizzatore. Anche se cifrato non è difficile capire le stringhe corrispondenti ai termini "da attivare" e "attivato", ed è quindi possibile modificarlo senza conoscere il metodo di cifratura. In secondo luogo i controlli di validità della licenza, come il verificare che la licenza sia attiva su un solo PC per volta, sono svolti totalmente in locale. Quindi, potendo reinstallare il Software su una nuova macchina (ricreando quindi i dati per il controllo), i controlli saranno sempre superati, perché il sistema non ha modo di capire che la licenza è stata installata due volte, ma capirebbe solo se l'installazione del programma sarebbe copiata su un'altra macchina. 
+Questo tipo di attacco è permesso per due motivi. In primo luogo il file contenente i dati delle licenze è salvato sul PC dell'utilizzatore. Anche se cifrato non è difficile capire le stringhe corrispondenti ai termini "da attivare" e "attivato", ed è quindi possibile modificarlo senza conoscere il metodo di cifratura. In secondo luogo i controlli di validità della licenza, come il verificare che la licenza sia attiva su un solo PC per volta, sono svolti totalmente in locale. Quindi, potendo reinstallare il Software su una nuova macchina (ricreando quindi i dati per il controllo), i controlli saranno sempre superati, perché il sistema non ha modo di capire che la licenza è stata installata due volte, dato che può verificare solo che l'installazione del programma non venga copiata su un'altra macchina. 
 
 \subsection{Avvio del Software Gestionale Vision} 
 
@@ -186,32 +186,31 @@ Grazie al nuovo sistema di monitoraggio l'azienda può visualizzare in ogni mome
 La seguente sezione mostra la pianificazione del lavoro attuata prima di iniziare l'attività di stage e l'effettivo utilizzo delle ore. Per rendere più chiara la pianificazione del lavoro e lo svolgimento effettivo delle attività sono utilizzati Diagrammi di Gantt.
 
 \subsection{Pianificazione antecedente lo stage}
-Nella Figura \ref{primastage} è mostrata la pianificazione dello stage prima di iniziare l'attività. La figura è disposta verticalmente per aumentarne la visibilità.
-\\
-\\
+Nella Figura \ref{primastage} è mostrata la pianificazione dello stage prima di iniziare l'attività.
 
-\rotatebox{90}{\begin{minipage}{0.75\textheight}
-%\begin{figure}
+
+%\rotatebox{90}{\begin{minipage}{0.75\textheight}
+\begin{figure}[!h]
 \centering
     \includegraphics[width=\textwidth]{ganttPrima} 
-    \captionof{figure}{Diagramma di Gantt - Pianificazione del lavoro}
+    \captionof{figure}{Diagramma di Gantt - Pianificazione del lavoro.}
     \label{primastage}
-    \end{minipage}}
-%\end{figure}
-\newpage
+    %\end{minipage}}
+    
+\end{figure}
 
 \subsection{Resoconto delle attività svolte}
 Nella Figura \ref{dopostage} è mostrata la suddivisione delle attività effettivamente svolte. Essa si discosta di molto rispetto quanto pianificato prima di iniziare lo stage. Infatti, grazie a un veloce apprendimento e a una buona progettazione, è stato possibile organizzare il tempo a disposizione per realizzare anche gli obiettivi secondari e facoltativi.
 \\
-\\
-\rotatebox{90}{\begin{minipage}{0.85\textheight}
-%\begin{figure}
+
+%\rotatebox{90}{\begin{minipage}{0.85\textheight}
+\begin{figure}[!h]
 \centering
     \includegraphics[width=\textwidth]{effettivostage} 
-    \captionof{figure}{Diagramma di Gantt - Attività svolte}
+    \captionof{figure}{Diagramma di Gantt - Attività svolte.}
     \label{dopostage}
-    \end{minipage}}
-%\end{figure}
+    %\end{minipage}}
+\end{figure}
 \newpage
 
 %**************************************************************
@@ -302,7 +301,7 @@ Per implementare un efficiente sistema di controllo della validità di una licen
 \begin{itemize}
 \item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Online, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere eseguito tramite Web Service; 
 \item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Offline, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere svolto in locale tramite l'utilizzo di chiavi di registro;
-\item deve essere implementato un controllo, che si ripete durante l'esecuzione del \textit{Software Gestionale Vision}, per verificare che la licenza sia in uso su una solo computer per volta, anche in caso di computer identici come macchine virtuali clonate. Il controllo eve essere eseguito tramite Web Service.
+\item deve essere implementato un controllo, che si ripete durante l'esecuzione del \textit{Software Gestionale Vision}, per verificare che la licenza sia in uso su una solo computer per volta, anche in caso di computer identici come macchine virtuali clonate. Il controllo deve essere eseguito tramite Web Service.
 \end{itemize}
 
 \subsubsection{Requisiti OS01}

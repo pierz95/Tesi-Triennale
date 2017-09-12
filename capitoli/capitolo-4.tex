@@ -7,7 +7,7 @@
 \label{cap:sviluppo-software}
 %**************************************************************
 
-In questo capitolo sono trattati gli elementi di base delle soluzioni sviluppate. In primo luogo sono illustrati i Web Service, responsabili della maggior parte delle operazioni. Successivamente è mostrato il Database di supporto con le principali caratteristiche.
+In questo capitolo sono trattati gli elementi di base delle soluzioni sviluppate. In primo luogo sono illustrati i Web Service responsabili della maggior parte delle operazioni. Successivamente è mostrato il Database di supporto con le principali caratteristiche.
 
 
 %**************************************************************
@@ -22,7 +22,7 @@ Grazie anche all'utilizzo di standard basati su XML, un'architettura basata su W
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.60\columnwidth]{web-service} 
-    \caption{Funzionamento di un Web Service}
+    \caption{Funzionamento di un Web Service.}
     \label{webservice}
 \end{figure}
 
@@ -46,7 +46,7 @@ Nella Figura \ref{soap} è mostrato un esempio di richiesta e risposta del metod
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{soap} 
-    \caption{Esempio di richiesta e risposta SOAP}
+    \caption{Esempio di richiesta e risposta SOAP.}
     \label{soap}
 \end{figure}
 
@@ -92,11 +92,11 @@ Di seguito sono riportate ulteriori funzionalità che il Web Service offre:
 \end{itemize}
 
 \subsection{LicenseSecurityService}
-\texttt{LicenseSecurityService} è il Web Service responsabile dei controlli da effettuare su una licenza e dell'area relativa alla sicurezza delle soluzioni sviluppate. La funzionalità più importante consiste nel verificare la validità di una licenza in termini di bloccaggio, data di scadenza e componente Hardware. A un esito positivo il metodo responsabile ritorna una stringa contenente le informazioni da utilizzare per il controllo della validità di una licenza in modalità Offline. Il funzionamento dettagliato è affrontato nella sezione x.x.
+\texttt{LicenseSecurityService} è il Web Service responsabile dei controlli da effettuare su una licenza e dell'area relativa alla sicurezza delle soluzioni sviluppate. La funzionalità più importante consiste nel verificare la validità di una licenza in termini di bloccaggio, data di scadenza e componente Hardware. A un esito positivo il metodo responsabile ritorna una stringa contenente le informazioni da utilizzare per il controllo della validità di una licenza in modalità Offline. Il funzionamento dettagliato è affrontato nella sezione \ref{off}.
 Per assicurare l'integrità dei messaggi scambiati col server, ove necessario, è utilizzato un sistema di cifratura a chiave pubblica, ad esempio per firmare i messaggi inviati dal server.\\
 Le altre funzionalità che il Web Service offre sono:
 \begin{itemize}
-\item eseguire il controllo di una licenza durante l'esecuzione del \textit{Software Gestionale Vision}, affrontato nella sezione X.X;
+\item eseguire il controllo di una licenza durante l'esecuzione del \textit{Software Gestionale Vision}, affrontato nella sezione \ref{uniqueid};
 \item restituire la chiave pubblica del server;
 \item firmare digitalmente un messaggio con la chiave privata del server.
 
@@ -162,7 +162,7 @@ Alla disattivazione di una licenza il record relativo al computer da dissociare 
 
 \subsubsection{LicenseTransmittedID}
 
-Contiene gli UniqueID utilizzati per il controllo durante l’esecuzione del Software Gestionale Vision (riferirsi alla sezione x.x per maggiori dettagli). \\Ogni record possiede le seguenti informazioni:
+Contiene gli UniqueID utilizzati per il controllo durante l’esecuzione del Software Gestionale Vision (riferirsi alla sezione \ref{uniqueid} per maggiori dettagli). \\Ogni record possiede le seguenti informazioni:
 
 \begin{itemize}
 \item Product Key della licenza a cui è associato l'UniqueID;

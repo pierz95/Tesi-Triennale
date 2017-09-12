@@ -14,7 +14,7 @@ I moduli saranno implementati dai programmatori modificando gli algoritmi o le c
 \\Poichè le funzionalità principali sono svolte dai Web Service i moduli, sviluppati in C\#, potranno essere facilmente migrati in altri linguaggi di programmazione utilizzati dall'azienda.
 \\
 Il \textit{Software Gestionale Vision} utilizza delle chiavi di registro per salvare le informazioni di una licenza, come il \texttt{Product Key}. Per i moduli sviluppati si è deciso di utilizzare la stessa tecnica. Esse saranno specificate nel corso della trattazione. 
-\\La verifica delle componenti Hardware associate a una licenza per verificarne l'utilizzo su un unico computer è approfondita nell'{\hyperref[cap:appA]{Grado di compatibilità}}.  
+\\La verifica delle componenti Hardware associate a una licenza per verificarne l'utilizzo su un unico computer è approfondita nella sezione {\hyperref[cap:appA]{Grado di compatibilità}}.  
 \\Nei prossimi paragrafi sono illustrati tutti i moduli sviluppati.
 
 %**************************************************************
@@ -40,7 +40,7 @@ Dopo che il cliente ha acquistato la licenza e ha ricevuto il \texttt{Product Ke
 \item il \texttt{Product Key} esiste, la licenza associata è valida e la componente Hardware collegata è compatibile con le componenti inviate per il controllo. La continuazione dell'attivazione è illustrata nella sezione \ref{hc};
 \item il \texttt{Product Key} esiste, la licenza associata è valida e la componente Hardware collegata non è compatibile con le componenti inviate per il controllo. La continuazione dell'attivazione è illustrata nella sezione \ref{hnc}.
 \end{itemize}
-\item un codice speciale è fornito qualora solo una specifica componente Hardware inviata per il controllo è uguale a quelle utilizzate. Questo codice rappresenta una situazione anomala e i dettagli del funzionamento sono riportati nella sezione x.x relativa al controllo offline. Le azioni da intraprendere alla ricezione di questo codice saranno decise dall'azienda al momento dell'implementazione, adesso è mostrato un messaggio d'errore e la procedura d'attivazione è bloccata.
+\item un codice speciale è fornito qualora solo una specifica componente Hardware inviata per il controllo è uguale a quelle utilizzate. Questo codice rappresenta una situazione anomala e i dettagli del funzionamento sono riportati nella sezione \ref{off} relativa al controllo offline. Le azioni da intraprendere alla ricezione di questo codice saranno decise dall'azienda al momento dell'implementazione, adesso è mostrato un messaggio d'errore e la procedura d'attivazione è bloccata.
 \end{itemize}
 \end{enumerate}
 
@@ -67,7 +67,7 @@ L’esecuzione termina utilizzando il Web Service \texttt{LicenseSecurityService
 \subsection{Hardware non compatibile}
 \label{hnc}
 Nel caso le componenti Hardware controllate risultino incompatibili con quelle attualmente associate alla licenza è probabile che l'utente voglia reinstallare la propria licenza su un computer diverso del precedente, ad esempio per un guasto improvviso o l'impossibilità di usare di quest'ultimo, non potendo disinstallare la licenza da esso. 
-\\La procedura controlla che non sia presente nessun’altra licenza associata alla macchina. Il controllo è eseguito verificando che non esista la chiave di registro relativa al \texttt{Product Key} (creata durante un'attivazione). Se è già presente un’altra licenza si chiede di disinstallarla prima di poter continuare, altrimenti è segnalato all’utente che la licenza che si sta cercando di installare è già installata su un altro computer, è viene chiesto se la si vuole dissociare da quella macchina per reinstallarla su quella corrente. A una risposta positiva dell’utente il programma procede con l’attivazione controllando che l’utente che sta tentando la disattivazione per poter riattivare la licenza sia effettivamente il possessore della email associata alla licenza. Il controllo è lo stesso utilizzato dalle altre due tipologie di attivazione, ossia è generato un codice casuale ed è inviato all'indirizzo email associato alla licenza. L'utente è quindi costretto a inserire il codice ricevuto per continuare l'attivazione.
+\\La procedura controlla che non sia presente nessun’altra licenza associata alla macchina. Il controllo è eseguito verificando che non esista la chiave di registro relativa al \texttt{Product Key} (creata durante un'attivazione). Se è già presente un’altra licenza si chiede di disinstallarla prima di poter continuare, altrimenti è segnalato all’utente che la licenza che si sta cercando di installare è già installata su un altro computer, e viene chiesto se la si vuole dissociare da quella macchina per reinstallarla su quella corrente. A una risposta positiva dell’utente il programma procede con l’attivazione controllando che l’utente che sta tentando la disattivazione per poter riattivare la licenza sia effettivamente il possessore della email associata alla licenza. Il controllo è lo stesso utilizzato dalle altre due tipologie di attivazione, ossia è generato un codice casuale ed è inviato all'indirizzo email associato alla licenza. L'utente è quindi costretto a inserire il codice ricevuto per continuare l'attivazione.
 \\
 Se il controllo di autenticità dell'utente è superato, è utilizzato il metodo del Web Service \texttt{LicenseManagerService} responsabile di aggiornare le date e le informazioni derivanti dalla nuova attivazione, come ad esempio le nuove componenti Hardware. In caso di successo del metodo, è invocato il metodo del Web Service \texttt{LicenseManagerService} per resettare il valore dell’\texttt{UniqueID} utilizzato per il controllo Online durante l’esecuzione del \textit{Software Gestionale Vision} (vedere la sezione \ref{uniqueid} per maggiori informazioni).\\
 L’esecuzione termina utilizzando il Web Service \texttt{LicenseSecurityService} per ottenere le caratteristiche della licenza da salvare in chiavi di registro e da utilizzare per il controllo Offline spiegato nella sezione \ref{off}. 
@@ -98,7 +98,7 @@ Il controllo di validità avviene tramite l'utilizzo del Web Service \texttt{Lic
 La componente Hardware specifica è una componente che per motivi di sicurezza non è qui specificata.\\
 Attualmente è utilizzato (GLOSSARIO)AES come algoritmo di cifratura, ma l'azienda \textit{VISIONEIMPRESA} ne utilizzerà un altro al momento dell'implementazione nel \textit{Software Gestionale Vision}.
 
-Il controllo di unicità della macchina utilizzata per la licenza avviene creando un (GLOSSARIO)thread che si esegue ogni ora. Il thread in questione esegue la procedura illustrata nella sezione \ref{uniqueid}.\\
+Il controllo di unicità della macchina utilizzata per la licenza avviene creando un (GLOSSARIO)thread che esegue ogni ora. Il thread in questione esegue la procedura illustrata nella sezione \ref{uniqueid}.\\
 
 Il modulo come operazioni finali dell’avvio Online: 
 \begin{itemize}
@@ -121,7 +121,6 @@ La verifica dell'integrità si basa sulla crittografia a chiave pubblica. In bre
 \item l'insieme delle caratteristiche, disposte in un ordine specifico, viene trasformato in Hash, e in seguito è cifrato attraverso la chiave privata (viene firmato);
 \item le caratteristiche e l'Hash sono inviate al Client che esegue il controllo;
 \item il Client ricrea l'Hash utilizzando lo stesso ordine specifico e controlla che sia uguale all'Hash ottenuto decifrando l'Hash firmato, utilizzando la chiave pubblica del Server. Questa verifica può essere fatta poichè nessuno è in grado di creare un messaggio decifrabile dalla chiave pubblica (che è quindi cifrato con la chiave privata tenuta segretamente dal Server) al di fuori del Server, e quindi l'Hash è da ritenersi valido e creato dal server. Se il Client non è in grado di decifrare l'Hash firmato o ricreare l'Hash uguale a quello inviato dal Server allora il controllo fallisce.
-\item   
 \end{enumerate}
 L'algoritmo di cifratura a chiave pubblica utilizzato è (GLOSSARIO) RSA.
 
@@ -129,10 +128,10 @@ Superato il controllo dell'integrità delle chiavi il modulo continua con il con
 
 \subsubsection{Controllo della data di scadenza}
 
-Per controllare la data di scadenza sono utilizzate le seguenti quattro chiavi, ognuna di esse cifratata, che devono essere decifrate prima di procedere col controllo. 
+Per controllare la data di scadenza sono utilizzate le seguenti quattro chiavi, ognuna di esse cifrata, che devono essere decifrate prima di procedere col controllo. 
 \begin{itemize}
 \item \textbf{Data dell'ultimo controllo:} coincide inizialmente con la data di attivazione, e si aggiorna ad ogni accesso ad Internet indicando la data di ultimo accesso al \textit{Software Gestionale Vision} in modalità Online;
-\item \textbf{Data di fine periodo Offline:} viene settata come data dell'ultimo controllo aumentata di 15 giorni. È ricalcolata ad ogni accesso del \textit{Software Gestionale Vision} in modalità Online;
+\item \textbf{Data di fine periodo Offline:} è impostata come data dell'ultimo controllo aumentata di 15 giorni. È ricalcolata ad ogni accesso del \textit{Software Gestionale Vision} in modalità Online;
 \item \textbf{Data di scadenza:} è la data di scadenza della licenza;
 \item \textbf{Data di ultimo accesso:} è la data utilizzata per verificare che l'utente non stia portando indietro l'orologio del pc. Inizialmente è impostata uguale alla data dell'ultimo controllo, e viene aggiornata ad ogni avvio Offline del programma se si soddisfa la seguente condizione: quando un utente accede al programma si controlla che la data attuale sia  maggiore della data di ultimo accesso. Se la data è minore è molto probabile che l'utente abbia portato indietro la data del pc. Il programma comunica quindi un'irregolarità rilevata, pregando di ricontrollare la data o di contattare l'azienda.
 \end{itemize}
@@ -141,7 +140,7 @@ Il programma controlla quindi che la data attuale non sia maggiore della data di
 
 \subsubsection{Controllo della componente Hardware}
 
-Il controllo della compatibiltà Hardware è realizzato in modo diverso da quello utilizzato dal Web Service \textit{LicenseSecurityService}, per conservarne la riservatezza. In questo controllo è semplicemente verificata un unica specifica Hardware estraendola dalla chiave di registro corrispondente, e il programma permette l'accesso se c'è match. Controllare solo una specifica Hardware da un lato dà un certo grado di affidabilità, in quanto la componente scelta è molto difficile che sia sostituita, dall'altro essendo un controllo diverso permette un monitoraggio sul fallimento di un controllo lato Online ma che sarebbe superato in modalità Offline, il che produce un segnale d'allarme. Questa considerazione si basa sul fatto che è molto poco probabile che un utente cambi tutto il PC mantenendo solo la componente scelta. È più probabile che abbia capito che nel controllo Offline è controllata quella componente e abbia tentato di forzare il sistema, non sapendo che nel controllo Online le componenti Hardware considerate sono molte altre.
+Il controllo della compatibiltà Hardware è realizzato in modo diverso da quello utilizzato dal Web Service \textit{LicenseSecurityService}, per conservarne la riservatezza. In questo controllo è semplicemente verificata un unica specifica Hardware estraendola dalla chiave di registro corrispondente, e il programma permette l'accesso se la componente controllata è la stessa del computer in uso. Controllare solo una specifica Hardware da un lato dà un certo grado di affidabilità, in quanto la componente scelta è molto difficile che sia sostituita, dall'altro essendo un controllo diverso permette un monitoraggio sul fallimento di un controllo lato Online ma che sarebbe superato in modalità Offline, il che produce un segnale d'allarme. Questa considerazione si basa sul fatto che è molto poco probabile che un utente cambi tutto il PC mantenendo solo la componente scelta. È più probabile che abbia capito che nel controllo Offline è controllata quella componente e abbia tentato di forzare il sistema, non sapendo che nel controllo Online le componenti Hardware considerate sono molte altre.
 
 
 %**************************************************************
@@ -169,7 +168,23 @@ Il modulo conlcude l'esecuzione eliminando le chiavi di registro utilizzate per 
 %**************************************************************
 \section{Modifica dell'indirizzo email della licenza}
 
-
+Con questo modulo viene data all'utente la possibilità di cambiare l'indirizzo email associato alla licenza.\\
+Il cambio dell’email inizia controllando che la chiave di registro contenente il \texttt{Product Key} della licenza esista. Se non viene trovata la procedura si interrompe. Successivamente richiede all'utente di inserire il nuovo indirizzo email. Il cambio email prosegue controllando che l'utente sia lo stesso che ha eseguito l'attivazione. Il controllo è lo stesso utilizzato per l'attivazione, ossia è generato un codice casuale ed è inviato all'indirizzo email associato alla licenza. L'utente è quindi costretto a inserire il codice ricevuto per continuare la procedura.\\
+Se il codice casuale è verificato viene invocato il metodo del Web Service\\ \texttt{LicenseManagerService} incaricato di impostare il nuovo indirizzo email associato alla licenza.
 
 %**************************************************************
-\section{Analisi critica}
+\section{Analisi critica del sistema di controllo}
+
+Il nuovo sistema di controllo sviluppato porta con sé molte migliorie rispetto a quello fino ad allora in vigore, pressoché inesistente. Le licenze infatti non avendo una data di scadenza potevano essere utilizzate senza limiti, gravando sui guadagni dell'azienda e riducendo la possibilità di gestione. Il controllo della componente Hardware è stato modificato per permettere all'utente di poter apportare modifiche non radicali al proprio PC e poter continuare ad utilizzare il \textit{Software Gestionale Vision}. Il vecchio sistema infatti, basandosi solo sulla scheda di rete, richiedeva molta assistenza da parte dell'azienda nelle procedure di disattivazione, poiché non è cosi raro un suo guasto o un cambiamento per motivi aziendali.
+\\È stato implementato un controllo all'avvio del \textit{Software Gestionale Vision} in modalità Online, il quale verifica che la licenza non sia bloccata (eliminando il sistema poco pratico della Blacklist), che non sia scaduta, e che le componenti Hardware siano compatibili. Nessuno di questi controlli era eseguito dal vecchio sistema, tranne la verifica Hardware, ma avvenendo sempre in locale poteva essere aggirata nel seguente modo:
+\begin{enumerate}
+\item si installa la licenza sulla prima macchina;
+\item dopo un po' di tempo (per non destare sospetti) si chiede all'azienda la disattivazione della stessa, il che non comporta l'eliminazione dell'\texttt{Activation Key} dato che è salvata solo in locale, bensì viene solo settato il \texttt{Product Key} come da attivare;
+\item l'azienda ora non ha più modo di verificare che il \texttt{Software Gestionale Vision} non sia in uso sulla prima macchina, ed è costretta a fidarsi della correttezza dei clienti. La licenza adesso può essere reinstallata in un nuovo computer, e rieseguendo la procedura si può disporre dell'utilizzo della licenza in più PC.
+\end{enumerate}
+Il nuovo sistema elimina questo problema se il Software è eseguito in Online, ma il problema può persistere in modalità Offline. Questo problema è dato poiché è pressoché impossibile riconoscere l'unicità di una macchina utilizzando solo dati contenuti in essa: che siano salvati in chiavi di registro, file nascosti o cifrati, è sufficiente eseguire una clonazione tramite l'utilizzo di macchine virtuali, e le due macchine risulteranno essere identiche se viste dall'interno.
+\\
+La clonazione delle macchine virtuali è controllata attraverso il sistema dell'\texttt{UniqueID}, in modo da segnalare immediatamente l'azienda al verificarsi di una anomalia. Questo è possibile se si sta utilizzando il Software in Online, ma non in Offline.
+\\
+Il problema dell'unicità del computer in cui è eseguito il Software potrebbe essere risolto completamente, o per lo meno diventerebbe molto più sicuro, se il \texttt{Software Gestionale Vision} richiedesse la presenza della connessione Internet per essere eseguito, ma per l'azienda è importante che i clienti possano utilizzare il loro Software anche in un periodo di vacanza o in caso di errori di connessione. Permettendo un periodo di 15 giorni in Offline si limita leggermente il rischio di contraffazione, ma salvando lo stato della macchina virtuale all'inizio del periodo Offline e ricaricandolo una volta scaduto i controlli saranno superati, poiché in Offline essi si basano su informazioni contenute in locale che sfruttano lo stato della macchina, e riportando il sistema a uno stato in cui i controlli erano superati essi saranno sempre superati, e finché il computer non viene connesso a Internet non è possibile attuare nessun tipo di controllo.
+\\Concludendo, concedere la possibilità di lavorare in Offline è il principale rischio di aggiramento dei controlli. Tuttavia l'utilizzo e la clonazione di macchine virtuali non sono pratiche comuni e di facile comprensione per tutti i clienti dell'azienda; il sistema deve essere ben conosciuto prima di poter essere aggirato, e alla prima connessione Online l'azienda sarebbe subito notificata delle possibili anomalie. Pertanto, sebbene il sistema non sia inespugnabile (premettendo che sarebbe comunque impossibile crearne uno, poiché con tecniche di (GLOSSARIO)Reverse Engineering si potrebbe ricompilare il programma eliminando i controlli), esso fornisce sicuramente un migliore controllo rispetto al sistema precedentemente in uso. Inoltre, esso lascia soddisfatti la maggior parte dei clienti, presumibilmente onesti, che richiedono di poter lavorare anche in caso di necessità senza connessione a Internet. Anche il controllo Online potrebbe essere superato modificando i dati inviati o ricevuti dal Server, ma utilizzando una connessione HTTPS per l'utilizzo dei Web Service questo pericolo può non essere tenuto in considerazione.
