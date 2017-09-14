@@ -13,10 +13,10 @@ In questo capitolo sono trattati gli elementi di base delle soluzioni sviluppate
 %**************************************************************
 \section{Web Service}
 
-Secondo la definizione del (GLOSSARIO)World Wide Web Consortium (W3C), un Web Service è un sistema software progettato per supportare l'interoperabilità tra diversi elaboratori su di una medesima rete.
-Questa caratteristica si ottiene associando all'applicazione un'interfaccia Software che espone all'esterno i propri servizi, per mezzo della quale altri sistemi possono interagire con l'applicazione stessa utilizzando le operazioni descritte nell'interfaccia. L'utilizzo delle operazione avviene tramite richieste, nel caso in esame di tipo SOAP (approfondito nella sezione \ref{soap}). I messaggi di richiesta sono formattati secondo lo standard XML, incapsulati e trasportati tramite protocollo HTTPS. 
-La connessione implementa il protocollo HTTPS, invece del classico HTTP, per aumentare la sicurezza del sistema, poiché trattandosi di dati riservati un utente malintenzionato vorrebbe poter disturbare la connessione o manometterne i dati trasmessi.\\
-Grazie anche all'utilizzo di standard basati su XML, un'architettura basata su Web Service permette ad applicazioni software scritte in diversi linguaggi di programmazione e implementate su diverse piattaforme hardware di utilizzare le funzionalità che essa espone senza difficoltà.
+Secondo la definizione del \gls{W3C}, un Web Service è un sistema Software progettato per supportare l'interoperabilità tra diversi elaboratori su di una medesima rete.
+Questa caratteristica si ottiene associando all'applicazione un'interfaccia Software che espone all'esterno i propri servizi, per mezzo della quale altri sistemi possono interagire con l'applicazione stessa utilizzando le operazioni descritte nell'interfaccia. L'utilizzo delle operazione avviene tramite richieste, nel caso in esame di tipo SOAP (approfondito nella sezione \ref{soap}). I messaggi di richiesta sono formattati secondo lo standard \gls{XML}, incapsulati e trasportati tramite protocollo HTTPS. 
+La connessione implementa il protocollo HTTPS, invece del classico HTTP, per aumentare la sicurezza del sistema, poiché trattandosi di dati riservati un utente malintenzionato vorrebbe poter disturbare la connessione o manomettere i dati trasmessi.\\
+Grazie anche all'utilizzo di standard basati su XML, un'architettura basata su Web Service permette ad applicazioni Software scritte in diversi linguaggi di programmazione e implementate su diverse piattaforme Hardware di utilizzare le funzionalità che essa espone senza difficoltà.
 \\Nella Figura \ref{webservice} è mostrato, in modo semplice, il funzionamento di un Web Service.
 
 \begin{figure}[!h] 
@@ -32,13 +32,13 @@ Nella realizzazione delle soluzioni sono stati sviluppati tre Web Service,\\ \te
 
 \subsection{Richieste SOAP}
 \label{soap}
-SOAP, acronimo di \textit{Simple Object Access Protocol}, è un protocollo per lo scambio di messaggi tra componenti software, nel caso in esame tra Client e Web Service, che avviene per mezzo della sintassi XML. \\
+SOAP, acronimo di \textit{Simple Object Access Protocol}, è un protocollo per lo scambio di messaggi tra componenti Software, nel caso in esame tra Client e Web Service, che avviene per mezzo della sintassi XML. \\
 Il protocollo definisce un insieme di regole che il Client deve rispettare per richiedere al server che ospita ed espone il Web Service una determinata operazione.
 \\
 Un messaggio SOAP è formato da un \texttt{Header} e da un \texttt{Body}:
 \begin{itemize}
 \item \textbf{Header:} è facoltativo e contiene meta-informazioni, come ad esempio informazioni di sicurezza o parametri per eseguire una procedura;
-\item \textbf{Body:} è obbligatorio e contiene il contenuto del messaggio, strutturando secondo (GLOSSARIO)l'XML Schema imposto dal Web Service.
+\item \textbf{Body:} è obbligatorio e contiene il contenuto del messaggio, strutturando secondo l'\gls{XML Schema} imposto dal Web Service.
 \end{itemize}
 
 Nella Figura \ref{soap} è mostrato un esempio di richiesta e risposta del metodo \texttt{setEmail} del Web Service \texttt{LicenseEmailService}.
@@ -50,14 +50,13 @@ Nella Figura \ref{soap} è mostrato un esempio di richiesta e risposta del metod
     \label{soap}
 \end{figure}
 
-Come si può vedere dalla Figura \ref{soap}, l'\texttt{Header} delle richieste è stato definito in modo da implementare un sistema
-di autenticazione, per far sì che i Web Service siano utilizzati esclusivamente da Client autorizzati. Questo argomento è illustrato in dettaglio nel prossimo paragrafo.
+Come si può vedere dalla Figura \ref{soap}, l'\texttt{Header} delle richieste è stato definito in modo da implementare un sistema di autenticazione per far sì che i Web Service siano utilizzati esclusivamente da Client autorizzati. Questo argomento è illustrato in dettaglio nel prossimo paragrafo.
 
 \subsection{Autenticazione}
 Per preservare la sicurezza dei dati ed evitare che chiunque possa utilizzare i servizi per la gestione delle licenze, è stato implementato un sistema di autenticazione per l'utilizzo dei Web Service. All'arrivo di una richiesta SOAP, i metodi controllano che sia presente l'Header (di norma opzionale), e che esso contenga gli elementi \texttt{UserName} e \texttt{Password}. Una volta verificata la loro esistenza, è invocata una funzione che verifica la validità delle credenziali in essi contenute. Se sono corrette il metodo continua la propria esecuzione, altrimenti ritorna un errore di autenticazione.
 
 \subsection{LicenseManagerService}
-\texttt{LicenseManagerService} è il Web Service che si occupa della gestione dei dati delle licenze e degli utenti di \textit{License Manager 1.0}, comunicando con il Database DBLicenze (illustrato nella sezione) per l'archiviazione e il ritiro dei dati. È il Web Service che fornisce più funzionalità, e coi suoi metodi riesce a supportare quasi la totalità delle operazioni richieste da \textit{License Manager 1.0}.\\
+\texttt{LicenseManagerService} è il Web Service che si occupa della gestione dei dati delle licenze e degli utenti di \textit{License Manager 1.0}, comunicando con il Database \texttt{DBLicenze} (illustrato nella sezione) per l'archiviazione e il ritiro dei dati. È il Web Service che fornisce più funzionalità, e coi suoi metodi riesce a supportare quasi la totalità delle operazioni richieste da \textit{License Manager 1.0}.\\
 Le funzionalità più importanti da esso offerte sono:
 
 \begin{itemize}
@@ -80,7 +79,7 @@ Le funzionalità più importanti da esso offerte sono:
 
 
 \subsection{LicenseEmailService}
-\texttt{LicenseEmailService} è il Web Service responsabile di gestire le operazioni legate agli indirizzi Email. La funzionalità più importante consiste nel generare un codice casuale e inviarlo tramite mail per verificare l'identità degli utenti e quindi autorizzare le operazioni più importanti. Questa procedura è svolta ad esempio nel momento della disattivazione di una licenza, dove si vuole controllare che l'utente operante sia lo stesso che l'ha attivata, avendo accesso all'indirizzo email inserito in fase di attivazione. L'utente è quindi costretto a inserire lo stesso codice casuale inviato all'indirizzo email associato alla licenza prima di poter continuare con l'operazione.\\
+\texttt{LicenseEmailService} è il Web Service responsabile di gestire le operazioni legate agli indirizzi Email. La funzionalità più importante consiste nel generare un codice casuale e inviarlo tramite mail per verificare l'identità degli utenti e quindi autorizzare le operazioni più importanti. Questa procedura è svolta ad esempio nel momento della disattivazione di una licenza, dove si vuole controllare che l'utente operante sia lo stesso che l'ha attivata, avendo accesso all'indirizzo Email inserito in fase di attivazione. L'utente è quindi costretto a inserire lo stesso codice casuale inviato all'indirizzo Email associato alla licenza prima di poter continuare con l'operazione.\\
 Di seguito sono riportate ulteriori funzionalità che il Web Service offre:
 \begin{itemize}
 \item restituire l'indirizzo email associato a una licenza;
@@ -92,7 +91,7 @@ Di seguito sono riportate ulteriori funzionalità che il Web Service offre:
 \end{itemize}
 
 \subsection{LicenseSecurityService}
-\texttt{LicenseSecurityService} è il Web Service responsabile dei controlli da effettuare su una licenza e dell'area relativa alla sicurezza delle soluzioni sviluppate. La funzionalità più importante consiste nel verificare la validità di una licenza in termini di bloccaggio, data di scadenza e componente Hardware. A un esito positivo il metodo responsabile ritorna una stringa contenente le informazioni da utilizzare per il controllo della validità di una licenza in modalità Offline. Il funzionamento dettagliato è affrontato nella sezione \ref{off}.
+\texttt{LicenseSecurityService} è il Web Service responsabile dei controlli da effettuare su una licenza e dell'area relativa alla sicurezza delle soluzioni sviluppate. La funzionalità più importante consiste nel verificare la validità di una licenza in termini di bloccaggio, data di scadenza e componenti Hardware. A un esito positivo il metodo responsabile ritorna una stringa contenente le informazioni da utilizzare per il controllo della validità di una licenza in modalità Offline. Il funzionamento dettagliato è affrontato nella sezione \ref{off}.
 Per assicurare l'integrità dei messaggi scambiati col server, ove necessario, è utilizzato un sistema di cifratura a chiave pubblica, ad esempio per firmare i messaggi inviati dal server.\\
 Le altre funzionalità che il Web Service offre sono:
 \begin{itemize}
@@ -106,7 +105,7 @@ Le altre funzionalità che il Web Service offre sono:
 %**************************************************************
 \section{Database}
 \label{sez:DBLic}
-Per l'archiviazione dei dati è utilizzato il Database relazionale DBLicenze, creato con SQLServer di Microsoft. L'ottenimento dei dati, per questioni di sicurezza, è affidato ai soli Web Service. Qualsiasi soluzione sviluppata deve affidarsi ai Web Service per interrogare il Database, aumentando il grado di affidabilità e riservatezza. L'utilizzo di un Database, in sostituzione al file condiviso tramite FTP, assicura maggiore consistenza dei dati, uso contemporaneo delle risorse grazie all'atomicità delle transazioni, controllo degli accessi, facilità nel reperimento dei dati e stabilità del sistema.
+Per l'archiviazione dei dati è utilizzato il Database relazionale \texttt{DBLicenze}, creato con SQL Server di Microsoft. L'ottenimento dei dati, per questioni di sicurezza, è affidato ai soli Web Service. Qualsiasi soluzione sviluppata deve affidarsi ai Web Service per interrogare il Database, aumentando il grado di affidabilità e riservatezza. L'utilizzo di un Database, in sostituzione al file condiviso tramite FTP, assicura maggiore consistenza dei dati, uso contemporaneo delle risorse grazie all'atomicità delle transazioni, controllo degli accessi, facilità nel reperimento dei dati e stabilità del sistema.
 
 
 \subsection{DBLicenze}
@@ -116,9 +115,9 @@ Per raccogliere i dati relativi alla gestione e al controllo delle licenze è st
 È la tabella fondamentale contenente le licenze del \textit{Software Gestionale Vision}. \\Le informazioni in essa contenute, per ogni licenza, sono le seguenti:
 
 \begin{itemize}
-\item Product Key;
-\item Serial Number;
-\item tipologia;
+\item \texttt{Product Key};
+\item \texttt{Serial Number};
+\item \texttt{Tipologia};
 \item componente Hardware associata alla licenza. Essa è espressa tramite una chiave esterna riferita alla tabella HWComponent;
 \item eventuale blocco della licenza;
 \item data di attivazione;
@@ -140,7 +139,7 @@ Contiene gli utenti del Software \textit{License Manager 1.0}.\\ Le informazioni
 
 \begin{itemize}
 \item username;
-\item hash della password in (glossario)SHA256;
+\item hash della password in \gls{SHA-256};
 \item essere admin;
 \item poter resettare la propria password;
 \item codice utente (o codice rivenditore);
@@ -162,17 +161,17 @@ Alla disattivazione di una licenza il record relativo al computer da dissociare 
 
 \subsubsection{LicenseTransmittedID}
 
-Contiene gli UniqueID utilizzati per il controllo durante l’esecuzione del Software Gestionale Vision (riferirsi alla sezione \ref{uniqueid} per maggiori dettagli). \\Ogni record possiede le seguenti informazioni:
+Contiene gli \texttt{UniqueID} utilizzati per il controllo durante l’esecuzione del \textit{Software Gestionale Vision} (riferirsi alla sezione \ref{uniqueid} per maggiori dettagli). \\Ogni record possiede le seguenti informazioni:
 
 \begin{itemize}
-\item Product Key della licenza a cui è associato l'UniqueID;
-\item UniqueID utilizzato per il controllo;
+\item \texttt{Product Key} della licenza a cui è associato l'\texttt{UniqueID};
+\item \texttt{UniqueID} utilizzato per il controllo;
 \item contatore delle risincronizzazioni effettuate;
 \item eventuale permesso di risincronizzazione;
-\item timestamp utilizzato per resettare il contatore delle risincronizzazioni ogni mese.
+\item data e ora di creazione del record utilizzata per resettare il contatore delle risincronizzazioni ogni mese.
 \end{itemize}
 
-Il contatore delle risincronizzazioni è utilizzato per monitorare quante volte l'UniqueID non viene trovato sul PC di cui verificare la validità della licenza. Esso può non essere trovato ad esempio per un eliminazione involontaria dei file responsabili al controllo. Il numero di risincronizzazioni permesse è tre ogni mese, in seguito l'azienda è informata dell'anomalia.
+Il contatore delle risincronizzazioni è utilizzato per tenere traccia di quante volte l'\texttt{UniqueID} non viene trovato sul PC di cui verificare la validità della licenza. Esso può non essere trovato ad esempio per un eliminazione involontaria dei file responsabili al controllo. Il numero di risincronizzazioni permesse è tre ogni mese, in seguito l'azienda è informata dell'anomalia.
 
 
 \subsubsection{EmailCodice}
@@ -184,10 +183,10 @@ Contiene i codici inviati via Email per controllare l’effettivo possesso dell�
 \item ID del codice da verificare;
 \item indirizzo email a cui è associato il codice;
 \item codice da verificare;
-\item timestamp per rendere inutilizzabile il codice dopo 10 minuti.
+\item data e ora di creazione del record per rendere inutilizzabile il codice dopo 10 minuti.
 \end{itemize}
 
-Ogni indirizzo email può avere più codici in attesa di verifica (situazione causata dalla non ricezione delle mail che li contenevano), ma solo il più recente è ritenuto valido e utilizzato per il controllo. Inoltre, i codici generati da più di 10 minuti sono eliminati per questioni di sicurezza.
+Ogni indirizzo Email può avere più codici in attesa di verifica (situazione causata dalla non ricezione delle mail che li contenevano), ma solo il più recente è ritenuto valido e utilizzato per il controllo. Inoltre, i codici generati da più di 10 minuti sono eliminati per questioni di sicurezza.
 
 \subsubsection{LogAccessi}
 
@@ -196,9 +195,9 @@ Contiene gli accessi al \textit{Software Gestionale Vision}.
 
 \begin{itemize}
 \item ID dell'accesso;
-\item Product Key della licenza di cui si registra l'accesso;
-\item indirizzo IP dell'accesso;
-\item MAC Address della scheda di rete del computer da cui si è effettuato l'accesso;
+\item \texttt{Product Key} della licenza di cui si registra l'accesso;
+\item \texttt{indirizzo IP} dell'accesso;
+\item \texttt{MAC Address} della scheda di rete del computer da cui si è effettuato l'accesso;
 \item data dell'accesso;
 \item codice utente associato alla licenza di cui si registra l'accesso.
 \end{itemize}
@@ -207,19 +206,19 @@ Tra le informazioni è salvato anche il codice utente associato alla licenza per
 
 \subsubsection{StoricoStatiLicenze}
 
-Contiene gli stati passati di una licenza. Ogni stato è stato creato in seguito a una modifica. Lo stato attuale di una licenza è presente nella tabella Licenze.
+Contiene gli stati passati di una licenza. Ogni stato è stato creato in seguito a una modifica. Lo stato attuale di una licenza è presente nella tabella \texttt{Licenze}.
 \\Ogni stato è caratterizzato dalle informazioni variabili di una licenza, ed ha quindi le seguenti informazioni:
 
 \begin{itemize}
 \item ID dello stato;
-\item componente Hardware;
+\item componenti Hardware associate;
 \item eventuale blocco;
 \item data di scadenza;
 \item cliente;
-\item email;
+\item indirizzo Email;
 \item codice cifrato dei moduli;
 \item codice utente;
 \item data di fine validità dello stato.
 \end{itemize}
 
-Disponendo di una tabella contenente gli stati di tutte le licenze antecedenti le modifiche, l'azienda è in grado di avere una panoramica su tutto lo storico delle proprie licenze, evitando ad esempio equivoci con i rivenditori.
+Disponendo di una tabella contenente gli stati di tutte le licenze antecedenti le modifiche l'azienda è in grado di avere una panoramica su tutto lo storico delle proprie licenze, evitando ad esempio equivoci con i rivenditori.

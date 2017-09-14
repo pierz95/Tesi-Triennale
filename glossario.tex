@@ -3,54 +3,147 @@
 %**************************************************************
 % Acronimi
 %**************************************************************
-\renewcommand{\acronymname}{Acronimi e abbreviazioni}
+%\renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
-\newacronym[description={\glslink{apig}{Application Program Interface}}]
-    {api}{API}{Application Program Interface}
-
-\newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
-    {uml}{UML}{Unified Modeling Language}
+%\newacronym[description={\glslink{urlg}{Uniform Resource Locator}}]
+  %  {url}{URL}{Uniform Resource Locator}    
     
-\newacronym[description={\glslink{urlg}{Uniform Resource Locator}}]
-    {url}{URL}{Uniform Resource Locator}    
-    
-\newacronym[description={\glslink{ideg}{Integrated development environment}}]
-	{ide}{IDE}{Integrated development environment}
+%\newacronym[description={\glslink{ideg}{Integrated development environment}}]
+%	{ide}{IDE}{Integrated development environment}
+%
+%\newacronym[description={\glslink{dbmsg}{Database Management System}}]{dbms}{DBMS}{Database Management System}
 
 %**************************************************************
 % Glossario
 %**************************************************************
 %\renewcommand{\glossaryname}{Glossario}
 
-\newglossaryentry{apig}
+\newglossaryentry{dbms}
 {
-    name=\glslink{api}{API},
-    text=Application Program Interface,
-    sort=api,
-    description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
+	name={DBMS},
+	text= DBMS,
+	sort=dbms,
+	description= {Gestione di basi di dati, è un sistema Software in grado di gestire collezioni di dati che siano grandi, condivise e persistenti, assicurando la loro affidabilità e privatezza.}
 }
 
-\newglossaryentry{umlg}
+\newglossaryentry{URL}
 {
-    name=\glslink{uml}{UML},
-    text=UML,
-    sort=uml,
-    description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
-}
-
-\newglossaryentry{urlg}
-{
-	name=\glslink{url}{URL},
+	name={URL},
     text=URL,
     sort=url,
-    description={Indirizzo web .....}
+    description={Sequenza di caratteri che identifica univocamente l'indirizzo di una risorsa in Internet, come un documento o un'immagine}
 }
 
-\newglossaryentry{ideg}
+\newglossaryentry{ide}
 {
-	name=\glslink{ide}{IDE},
+	name={IDE},
 	text=IDE,
 	sort=ide,
-	description ={In informatica un ambiente di sviluppo integrato (ing integrated development environment ovvero IDE) è un software che, in fase di programmazione, aiuta i programmatori nello sviluppo del codice sorgente di un programma. Spesso l'IDE aiuta lo sviluppatore segnalando errori di sintassi del codice direttamente in fase di scrittura, oltre a tutta una serie di strumenti e funzionalità di supporto alla fase di sviluppo e debugging.
-	}
+	description ={In informatica un ambiente di sviluppo integrato (ing. \textit{integrated development environment}) è un software che, in fase di programmazione, aiuta i programmatori nello sviluppo del codice sorgente di un programma. Spesso l'IDE aiuta lo sviluppatore segnalando errori di sintassi del codice direttamente in fase di scrittura, oltre a tutta una serie di strumenti e funzionalità di supporto alla fase di sviluppo e debugging}
+}
+
+\newglossaryentry{ftp}
+{
+	name = FTP,
+	text = FTP,
+	sort = ftp,
+	description = {\textit{File Transfer Protocol} (protocollo di trasferimento file), in informatica e nelle telecomunicazioni, è un protocollo per la trasmissione di dati tra macchine basato su TCP (ing. \textit{Transmission Control Protocol}, protocollo di rete responsabile di rendere affidabile la comunicazione dati tra mittente e destinatario) e con architettura di tipo client-server.\\
+Il protocollo usa connessioni TCP distinte per trasferire i dati e per controllare i trasferimenti e richiede autenticazione del client tramite nome utente e password}
+}
+
+\newglossaryentry{MAC Address}
+{
+	name = {MAC Address},
+	text = {MAC Address},
+	sort = {mac address},
+	description = {In informatica e telecomunicazioni il MAC Address(indirizzo MAC, dove MAC sta per Media Access Control) è un codice di 48 bit assegnato in modo univoco ad ogni scheda di rete Ethernet o Wireless prodotta al mondo}
+}
+
+\newglossaryentry{HTTPS}
+{
+	name= {HTTPS},
+	text ={HTTPS},
+	sort = {https},
+	description= {Protocollo largamente utilizzato su Internet per la comunicazione sicura attraverso una rete di computer. HTTPS è il risultato dell'applicazione di un protocollo di crittografia asimmetrica al protocollo di trasferimento di ipertesti HTTP. È utilizzato per garantire trasferimenti riservati di dati nel web, in modo da impedire intercettazioni dei contenuti}
+}
+
+\newglossaryentry{W3C}
+{
+	name={W3C},
+	text={W3C},
+	sort={w3c},
+	description={Il World Wide Web Consortium, anche conosciuto come W3C, è un'organizzazione internazionale, non governativa, che stabilisce standard tecnici per il World Wide Web inerenti sia i linguaggi di markup che i protocolli di comunicazione, al fine di assicurare la crescita del Web}
+}	
+
+\newglossaryentry{XML Schema}
+{
+	name={XML Schema},
+	text={XML Schema},
+	sort={xml schema},
+	description={Lo XML Schema è un linguaggio di descrizione del contenuto di un file XML. Il suo scopo è delineare quali elementi sono permessi, quali tipi di dati sono ad essi associati e quale relazione gerarchica hanno fra loro gli elementi contenuti in un file XML. Lo XML Schema permette la convalida del file XML e l'estrazione da un file XML di un insieme di oggetti}
+}
+	
+\newglossaryentry{SHA-256}
+{
+	name={SHA-256},
+	text={SHA-256},
+	sort={sha-256},
+	description={SHA-256 è una funzione crittografica di hash, ossia un algoritmo che trasforma dati di lunghezza arbitraria in una stringa di lunghezza fissa, da cui è impossibile risalire al messaggio originale. SHA-256 fa parte della famiglia di funzioni SHA-2 (\textit{Secure Hash Algoritm 2}) sviluppata dalla \textit{National Security Agency}. Il 256 che appare nel nome è la lunghezza, in bit, della stringa risultato}
+}
+
+\newglossaryentry{AES}
+{
+	name={AES},
+	text={AES},
+	sort={aes},
+	description={AES, \textit{Advanced Encryption Standard}, conosciuto anche come \textit{Rijndael}, è un algoritmo di cifratura a blocchi utilizzato come standard dal governo degli Stati Uniti d'America. In base all'implementazione, la dimensione della chiave può essere di 128, 192 o 256 bit, mentre la dimensione dei blocchi è sempre di 128 bit. L'algoritmo sfrutta una sequenza di permutazioni e sostituzioni per cifrare un messaggio e in seguito poterlo decifrare}
+}
+
+\newglossaryentry{thread}
+{
+	name={Thread},
+	text={Thread},
+	sort={thread},
+	description={È la più piccola sequenza di istruzioni programmate che possono essere gestite indipendentemente da uno \textit{scheduler} (componente del sistema operativo che coordina l'accesso alle risorse). Solitamente un thread è un componente di un processo, più thread possono esistere all'interno di un processo ed utilizzare le sue stesse risorse, possibiltà non permessa ad un processo diverso}
+}
+
+\newglossaryentry{KeyContainer}
+{
+	name={KeyContainer},
+	text={KeyContainer},
+	sort=keycontainer,
+	description={Contenitore di chiavi messo a disposizione dalle librerie di classi .NET Framework, il quale permette di salvare una coppia di chiavi asimmetriche in sicurezza, agevolandone la gestione}
+}
+
+\newglossaryentry{RSA}
+{
+	name={RSA},
+	text={RSA},
+	sort={rsa},
+	description={Algoritmo di crittografia asimmetrica, inventato nel 1977 da Ronald Rivest, Adi Shamir e Leonard Adleman (le iniziali dei cognomi formano il nome dell'algoritmo) utilizzabile per cifrare o firmare informazioni.\\
+Il sistema di crittografia si basa sull'esistenza di due chiavi distinte, dette comunemente pubblica e privata, che vengono usate per cifrare e decifrare. Se la prima chiave viene usata per la cifratura, la seconda deve necessariamente essere utilizzata per la decifratura e viceversa. Sebbene le due chiavi siano fra loro dipendenti, non è possibile risalire dall'una all'altra, garantendo l'integrità del metodo. Il poter decifrare un messaggio solo grazie alla chiave collegata a quella utilizzata per la cifratura permette di utilizzare l'algoritmo per firmare digitalmente dei dati}
+}
+
+\newglossaryentry{Reverse Engineering}
+{
+	name={Reverse Engineering},
+	text={Reverse Engineering},
+	sort={reverse engineering},
+	description={\textit{Reverse engineering}, o ingeneria inversa, è il processo di estrazione di informazioni da un prodotto finito per poterlo riprodurre o costruire un nuovo prodotto sulla base delle informazioni ottenute. Spesso esso si traduce nel disassemblare un Software per poterne analizzare il funzionamento e riscriverlo a proprio piacimento}
+}
+
+\newglossaryentry{XML}
+{
+	name={XML},
+	text={XML},
+	sort={xml},
+	description={XML, \textit{eXtensible Markup Language}, è un linguaggio di \textit{markup} (o marcatore) che definisce un insieme di regole per scrivere e controllare gli elementi contenuti in un documento in un formato leggibile sia dagli umani sia dai computer, utilizzando dei \textit{tag} (o etichette) che possono essere creati e definiti dagli utenti. Il linguaggio è estensibile ed è di facile interpretazione, perciò è largamente utilizzato nella trasmissione di documenti nel Web}
+}
+
+\newglossaryentry{HTTP}
+{
+	name={HTTP},
+	text={HTTP},
+	sort={http},
+	description={\textit{HyperText Transfer Protocol}, o protocollo di trasferimento di un ipertesto, è un protocollo a livello applicativo usato come principale sistema per la trasmissione d'informazioni sul Web}
 }

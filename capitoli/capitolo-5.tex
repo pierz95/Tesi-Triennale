@@ -7,16 +7,16 @@
 \label{cap:license-manager}
 %**************************************************************
 
-\textit{License Manager 1.0} nasce con lo scopo di creare nuove licenze, eliminando \textit{GenPK} e le problematiche ad esso correlato. Nel corso dello stage, con il delinearsi di nuovi obiettivi, il programma è stato ampliato per poter gestire la maggior parte degli aspetti di una licenza, incluso il monitoraggio. Le funzionalità del Software sono svolte tramite chiamate a Web Service, i quali utilizzano il Database \texttt{DBLicenze} per il salvataggio dei dati.
+\textit{License Manager 1.0} nasce con lo scopo di creare nuove licenze, eliminando \textit{GenPK} e le problematiche ad esso correlate. Nel corso dello stage, con il delinearsi di nuovi obiettivi, il programma è stato ampliato per poter gestire la maggior parte degli aspetti di una licenza, incluso il monitoraggio. Le funzionalità del Software sono svolte tramite chiamate a Web Service, i quali utilizzano il Database \texttt{DBLicenze} per il salvataggio dei dati.
 \\
 Inizialmente pensato per un uso interno all'azienda, grazie alle molteplici funzionalità che esso offriva, è stato deciso di distribuire il Software anche ai rivenditori, concedendo loro una maggior capacità operativa.
-I rivenditori, per la sicurezza dell'azienda, possono usufruire di operazioni limitate, e le modifiche più rilevanti sono comunicate a \textit{VISIONEIMPRESA} tramite mail.
+I rivenditori, per la sicurezza dell'azienda, possono usufruire di operazioni limitate, e le modifiche più rilevanti sono comunicate a \textit{VISIONEIMPRESA s.r.l} tramite mail.
 
 
 %**************************************************************
 \section{Scopo del prodotto}
 
-Con \textit{License Manager 1.0} si vuole racchiudere in un unico programma la possibilità di gestire completamente le licenze del \textit{Software Gestionale Vision}, dalla creazione all'eliminazione, con la possibilità di effettuare modifiche, ricevere statistiche e monitorare lo stato delle licenze per notare possibili anomalie. 
+Con \textit{License Manager 1.0} si vuole racchiudere in un unico programma la gestione completa delle licenze del \textit{Software Gestionale Vision}, dalla creazione all'eliminazione, con la possibilità di effettuare modifiche, ricevere statistiche e monitorare lo stato delle licenze per notare possibili anomalie. 
 
 %**************************************************************
 
@@ -63,16 +63,15 @@ Dopo l'autenticazione, il programma si mostra come in Figura \ref{primscher}.
 È presente un menu laterale, sulla sinistra, che permette la navigazione tra le diverse sezioni del programma:
 
 \begin{itemize}
-\item \textbf{Gestione Licenze:} Sono presenti tutte le funzionalità che permettono di gestire le licenze, dalla creazione all’eliminazione;
-\item \textbf{Esporta ed Invia:} Sono presenti funzionalità che permettono di creare un file riepilogativo della licenza o esportare in un file Excel il riepilogo di alcuni dati;
-\item \textbf{Statistiche:} Sono presenti alcune statistiche delle licenze visibili all’utente. Un \textit{Admin} può visualizzare le statistiche di tutte le licenze o di quelle associate a un rivenditore, mentre un \textit{Guest} può visualizzare le solo le statistiche delle licenze ad esso associate;
-\item \textbf{Log Accessi:} Permette di visualizzare gli accessi al \textit{Software Gestionale Vision} delle proprie licenze, per monitorare eventuali anomalie;
-\item \textbf{Amministra utenti:} Sezione visibile solo agli amministratori, dove è possibile gestire gli utenti del programma.
+\item \textbf{Gestione Licenze:} sono presenti tutte le funzionalità che permettono di gestire le licenze, dalla creazione all’eliminazione;
+\item \textbf{Esporta ed Invia:} sono presenti funzionalità che permettono di creare un file riepilogativo della licenza o esportare in un file Excel il riepilogo di alcuni dati;
+\item \textbf{Statistiche:} sono presenti alcune statistiche delle licenze visibili all’utente. Un \textit{Admin} può visualizzare le statistiche di tutte le licenze o di quelle associate a un rivenditore, mentre un \textit{Guest} può visualizzare solo le statistiche delle licenze ad esso associate;
+\item \textbf{Log Accessi:} permette di visualizzare gli accessi al \textit{Software Gestionale Vision} delle proprie licenze, per monitorare eventuali anomalie;
+\item \textbf{Amministra utenti:} sezione visibile solo agli amministratori, dove è possibile gestire gli utenti del programma.
 
 \end{itemize}
 
 In basso a sinistra è riportato l’utente che ha effettuato l'accesso.
-\\
 Tutte le sezioni saranno spiegate nel dettaglio nei prossimi paragrafi.
 
 %**************************************************************
@@ -126,8 +125,8 @@ La funzione “Aggiungi” permette di creare una nuova licenza. Il metodo di cr
 Per creare una licenza è necessario innanzitutto valorizzare i campi obbligatori, ovvero \texttt{Tipologia} e \texttt{Serial Number}. 
 \begin{itemize}
 
-\item \textbf{Tipologia:} Identifica quale licenza si sta creando, e i valori possibili sono SQL, LT, ERP o Trasporti. 
-\item \textbf{Serial Number:} Numero di sei cifre che identifica in modo univoco, per tipologia, una licenza. Uno stesso Serial Number è permesso per diverse tipologie. La scelta del Serial Number differisce da Admin e Guest.  
+\item \textbf{Tipologia:} identifica quale licenza si sta creando, e i valori possibili sono SQL, LT, ERP o Trasporti; 
+\item \textbf{Serial Number:} numero di sei cifre che identifica in modo univoco, per tipologia, una licenza. Uno stesso \texttt{Serial Number} è permesso per diverse tipologie. La scelta del \texttt{Serial Number} differisce da \textit{Admin} e \textit{Guest}.  
 \begin{itemize}
 
 \item	\textbf{Admin:} Può scegliere tra un \texttt{Serial Number}:
@@ -141,7 +140,7 @@ Per creare una licenza è necessario innanzitutto valorizzare i campi obbligator
 
 \end{itemize}	
 
-Dopo aver scelto Tipologia e Serial Number è necessario cliccare su "Genera Credenziali" per poter continuare con la creazione della licenza. Cliccando su questo pulsante è invocato un metodo del Web Service \texttt{LicenseManagerService} che produrrà un \texttt{Serial Number} compatibile con la scelta effettuata e un \texttt{Product Key} che identifica univocamente una licenza, indipendentemente dalla tipologia. Qualora il Serial Number scelto in caso di selezione "Manuale" o "Casuale" fosse già in uso, sarà comunicato che non è possibile utilizzare tali valori ed è necessario sceglierne degli altri. In caso di scelta "Prime due cifre per l’anno" il \texttt{Serial Number} prodotto sarà il primo libero disponibile a partire dal numero a quattro cifre scelto. Dopo la creazione delle credenziali il pulsante "Salva" si attiverà e sarà possibile salvare la licenza, come si evince dalla Figura \ref{salva}.
+Dopo aver scelto \texttt{Tipologia} e \texttt{Serial Number} è necessario cliccare su "Genera Credenziali" per poter continuare con la creazione della licenza. Cliccando su questo pulsante è invocato un metodo del Web Service \texttt{LicenseManagerService} che produrrà un \texttt{Serial Number} compatibile con la scelta effettuata e un \texttt{Product Key} che identifica univocamente una licenza, indipendentemente dalla tipologia. Qualora il \texttt{Serial Number} scelto in caso di selezione "Manuale" o "Casuale" fosse già in uso, sarà comunicato che non è possibile utilizzare tali valori ed è necessario sceglierne degli altri. In caso di scelta "Prime due cifre per l’anno" il \texttt{Serial Number} prodotto sarà il primo libero disponibile a partire dal numero a quattro cifre scelto. Dopo la creazione delle credenziali il pulsante "Salva" si attiverà e sarà possibile salvare la licenza, come si evince dalla Figura \ref{salva}.
 
  \begin{figure}[!h] 
     \centering 
@@ -164,7 +163,7 @@ Prima di procedere con il salvataggio è possibile definire delle informazioni a
 Una licenza creata da un \textit{Guest} avrà come \texttt{Codice Utente} il suo codice, mentre se è creata da un \textit{Admin} esso sarà inizialmente nullo e potrà essere impostato in seguito attraverso la funzione "Modifica".
 \\
 L’esecuzione del salvataggio cambia a seconda di una creazione da parte di un \textit{Admin} o di un \textit{Guest}.
-Solo se a creare la licenza è stato un \textit{Guest} viene prima notificata via mail l'azienda \textit{VISIONEIMPRESA}, attraverso l'utilizzo del Web Service \texttt{LicenseEmailService}, e poi si procede al salvataggio della licenza tramite l'utilizzo del Web Service \texttt{LicenseManagerService}. Se la notifica dovesse fallire l’operazione di salvataggio non viene eseguita, in quanto potrebbe sfuggire la creazione di una licenza. Se un errore dovesse incorrere durante il salvataggio sarà inviata una seconda mail per avvertire che la mail di creazione inviata in precedenza potrebbe essere errata.\\
+Solo se a creare la licenza è stato un \textit{Guest} viene prima notificata via mail l'azienda \textit{VISIONEIMPRESA s.r.l.}, attraverso l'utilizzo del Web Service \texttt{LicenseEmailService}, e poi si procede al salvataggio della licenza tramite l'utilizzo del Web Service \texttt{LicenseManagerService}. Se la notifica dovesse fallire l’operazione di salvataggio non viene eseguita, in quanto potrebbe sfuggire la creazione di una licenza. Se un errore dovesse incorrere durante il salvataggio sarà inviata una seconda mail per avvertire che la mail di creazione inviata in precedenza potrebbe essere errata.\\
 Se a creare la licenza è un \textit{Admin} l'azienda non viene notificata.
 \\
 Infine, se la creazione è andata a buon fine, è mostrato un messaggio che lo conferma e la schermata di creazione viene chiusa. Nella lista delle licenze apparirà quindi la nuova licenza appena creata, come si può vedere nella Figura \ref{nuova}.
@@ -184,7 +183,7 @@ La funzione "Modifica" permette di modificare i dati non immutabili di una licen
 \item \textbf{Data di scadenza:} data di scadenza di una licenza, può anche essere rimossa;
 \item \textbf{Cliente:} nome del cliente, utilizzato per comodità per riferirsi a una licenza;
 \item \textbf{Email:} indirizzo email associato alla licenza. Tramite l’indirizzo email il cliente può disattivare e riattivare la propria licenza senza che sia necessario contattare l’azienda. Per questo motivo ai \textit{Guest} non è data la possibilità di modificare l’email decisa dai clienti in fase di attivazione;
-\item \textbf{Codice Utente:} codice del rifornitore cui è assegnata la licenza. Un rifornitore sarà in grado di vedere solo le licenze con il codice utente uguale a quello a lui assegnato. Per questo motivo anche il \texttt{Codice Utente} non può essere modificato dai rifornitori.
+\item \textbf{Codice Utente:} codice del rifornitore cui è assegnata la licenza. Un rifornitore sarà in grado di vedere solo le licenze con il \texttt{Codice Utente} uguale a quello a lui assegnato. Per questo motivo anche il \texttt{Codice Utente} non può essere modificato dai rifornitori.
 Gli \textit{Admin}, invece, possono vedere tutte le licenze e modificarne il \texttt{Codice Utente}, a meno che la licenza non sia impostata come "Licenza ad uso interno non rivendibile". Riferirsi alla sezione \ref{gestmod} per ulteriori informazioni.
 \end{itemize} 
 
@@ -248,7 +247,7 @@ Nella Figura \ref{elim} l’utente \textit{Guest} "ProvaLT", tentando l’elimin
 
 \subsection{Disassocia}
 
-La funzione "Disassocia" permette di dissociare una licenza dalla sua componente Hardware, utilizzata per verificare che la licenza sia utilizzata in un solo computer per volta. 
+La funzione "Disassocia" permette di dissociare una licenza dalla sua componente Hardware, utilizzata per verificare che la licenza sia in uso su un solo computer per volta. 
 Dissociando una licenza dalla sua componente Hardware se ne permette la reinstallazione in una nuova macchina, mentre su quella attuale all’avvio del \textit{Software Gestionale Vision} risulterà che la licenza non è più associata a quel dispositivo.
 
 \subsection{Gestione Moduli}
@@ -278,7 +277,7 @@ Nel caso a generare il codice fosse un \textit{Admin}, nel riquadro al posto di 
 A questo punto è necessario salvare con il pulsante "Salva" per rendere effettive le modifiche.
 Un \textit{Admin} può definire più volte i moduli nella stessa schermata, ma dopo aver salvato la prima volta è necessario rigenerare il codice per poter salvare nuovamente.\\
 L’esecuzione del salvataggio cambia a seconda della definizione dei moduli da parte di un \textit{Admin} o di un \textit{Guest}.
-Solo se a creare la licenza è stato un \textit{Guest} viene prima notificata via mail l'azienda \textit{VISIONEIMPRESA}, attraverso l'utilizzo del Web Service \texttt{LicenseEmailService}, e poi si procede al salvataggio dei moduli tramite l'utilizzo del Web Service \texttt{LicenseManagerService}. Se la notifica dovesse fallire l’operazione di salvataggio non viene eseguita, in quanto potrebbe sfuggire la definizione dei moduli, operazione fondamentale per una corretta fatturazione della licenza. Se un errore dovesse incorrere durante il salvataggio sarà inviata una seconda mail per avvertire che la mail inviata in precedenza potrebbe essere errata.
+Solo se a creare la licenza è stato un \textit{Guest} viene prima notificata via mail l'azienda \textit{VISIONEIMPRESA s.r.l.}, attraverso l'utilizzo del Web Service \texttt{LicenseEmailService}, e poi si procede al salvataggio dei moduli tramite l'utilizzo del Web Service \texttt{LicenseManagerService}. Se la notifica dovesse fallire l’operazione di salvataggio non viene eseguita, in quanto potrebbe sfuggire la definizione dei moduli, operazione fondamentale per una corretta fatturazione della licenza. Se un errore dovesse incorrere durante il salvataggio sarà inviata una seconda mail per avvertire che la mail inviata in precedenza potrebbe essere errata.
 Una mail riepilogativa dei moduli è inviata anche all'indirizzo email associato all'utente che sta definendo i moduli.
 
 \newpage
@@ -321,7 +320,7 @@ La funzione "Rimuovi filtro" rimuove il filtro selezionato in precedenza, tornan
 
 \section{Esporta ed Invia}
 
-Nella sezione "Esporta ed Invia" è possibile esportare alcuni dati relativi alle licenze o creare un documento riepilogativo della licenza selezionata. Come per la sezione "Gestione Licenze" saranno mostrate solo le licenze compatibili con il Codice Utente dell’utente loggato. I campi qui mostrati riguardano i contatti delle licenze.
+Nella sezione "Esporta ed Invia" è possibile esportare alcuni dati relativi alle licenze o creare un documento riepilogativo della licenza selezionata. Come per la sezione "Gestione Licenze" saranno mostrate solo le licenze compatibili con il \texttt{Codice Utente} dell’utente che ha effettuato l'accesso. I campi qui mostrati riguardano i contatti delle licenze.
 In Figura \ref{espinv} è possibile vedere una situazione esempio della sezione.
 
 \begin{figure}[!h] 
@@ -343,7 +342,7 @@ La funzione "Esporta Excel" permette di esportare in un file ".xls" due tipologi
 
 \end{itemize}
 
-L'ottenimento dei dati avviene tramite l'utilizzo del Web Service \texttt{LicenseManagerService}.
+L'ottenimento dei dati avviene tramite il Web Service \texttt{LicenseManagerService}.
 
 \subsection{Crea RTF}
 \label{creartf}
@@ -406,12 +405,12 @@ Le statistiche mostrate sono le seguenti:
 
 \end{itemize}
 
-L'ottenimento delle statistiche avviene tramite l'utilizzo del Web Service \textit{LicenseManagerService}.
+L'ottenimento dei dati avviene tramite il Web Service \texttt{LicenseManagerService}.
 
 %**************************************************************
 \section{Log Accessi}
 
-Nella sezione "Log Accessi" è possibile monitorare gli accessi al \textit{Software Gestionale Vision}, legando al \texttt{Product Key} utilizzato per l’attivazione l’indirizzo IP e il MAC Address della scheda di rete utilizzati per connettersi a Internet. In questo modo è possibile venire a conoscenze di alcune anomalie come accessi multipli da diverse postazioni, qualora i controlli fossero stati evasi.\\
+Nella sezione "Log Accessi" è possibile monitorare gli accessi al \textit{Software Gestionale Vision}, legando al \texttt{Product Key} utilizzato per l’attivazione l’\texttt{indirizzo IP} e il \texttt{MAC Address} della scheda di rete utilizzati per connettersi a Internet. In questo modo è possibile venire a conoscenze di alcune anomalie come accessi multipli da diverse postazioni, qualora i controlli fossero stati evasi.\\
 In Figura \ref{accessi} è possibile vedere una situazione esempio della sezione.
 \begin{figure}[!h] 
     \centering 
@@ -423,7 +422,7 @@ In Figura \ref{accessi} è possibile vedere una situazione esempio della sezione
 
 \subsection{Funzionalità}
 
-Sotto le voci "Licenze con multipli IP" e "Licenze con multipli MAC Address" sono mostrate quante licenze hanno rispettivamente più indirizzi IP e più MAC Address associati.
+Sotto le voci "Licenze con multipli IP" e "Licenze con multipli MAC Address" sono mostrate quante licenze hanno rispettivamente più di un \texttt{indirizzo IP} e più {MAC Address} associati.
 Se una licenza dovesse avere più di due indirizzi associati verrebbe contata comunque una sola volta.\\
 Cliccando su "Licenze con multipli IP" vengono selezionati in verde il \texttt{Product Key} e \texttt{l’indirizzo IP} dei record che hanno un \texttt{indirizzo IP} diverso dalla prima occorrenza per quel \texttt{Product Key}.\\
 Cliccando su "Licenze con multipli MAC Address" vegono selezionati in rosso il \texttt{Product Key} e il \texttt{MAC Address} dei record che hanno un \texttt{MAC Address} diverso dalla prima occorrenza per quel \texttt{Product Key}.
