@@ -14,7 +14,7 @@ In questo capitolo sono trattati gli elementi di base delle soluzioni sviluppate
 \section{Web Service}
 
 Secondo la definizione del \gls{W3C}, un Web Service è un sistema Software progettato per supportare l'interoperabilità tra diversi elaboratori su di una medesima rete.
-Questa caratteristica si ottiene associando all'applicazione un'interfaccia Software che espone all'esterno i propri servizi, per mezzo della quale altri sistemi possono interagire con l'applicazione stessa utilizzando le operazioni descritte nell'interfaccia. L'utilizzo delle operazione avviene tramite richieste, nel caso in esame di tipo SOAP (approfondito nella sezione \ref{soap}). I messaggi di richiesta sono formattati secondo lo standard \gls{XML}, incapsulati e trasportati tramite protocollo HTTPS. 
+Questa caratteristica si ottiene associando all'applicazione un'interfaccia Software che espone all'esterno i propri servizi, per mezzo della quale altri sistemi possono interagire con l'applicazione stessa utilizzando le operazioni descritte nell'interfaccia. L'utilizzo delle operazioni avviene tramite richieste, nel caso in esame di tipo SOAP (approfondito nella sezione \ref{soap}). I messaggi di richiesta sono formattati secondo lo standard \gls{XML}, incapsulati e trasportati tramite protocollo HTTPS. 
 La connessione implementa il protocollo HTTPS, invece del classico HTTP, per aumentare la sicurezza del sistema, poiché trattandosi di dati riservati un utente malintenzionato vorrebbe poter disturbare la connessione o manomettere i dati trasmessi.\\
 Grazie anche all'utilizzo di standard basati su XML, un'architettura basata su Web Service permette ad applicazioni Software scritte in diversi linguaggi di programmazione e implementate su diverse piattaforme Hardware di utilizzare le funzionalità che essa espone senza difficoltà.
 \\Nella Figura \ref{webservice} è mostrato, in modo semplice, il funzionamento di un Web Service.
@@ -38,7 +38,7 @@ Il protocollo definisce un insieme di regole che il Client deve rispettare per r
 Un messaggio SOAP è formato da un \texttt{Header} e da un \texttt{Body}:
 \begin{itemize}
 \item \textbf{Header:} è facoltativo e contiene meta-informazioni, come ad esempio informazioni di sicurezza o parametri per eseguire una procedura;
-\item \textbf{Body:} è obbligatorio e contiene il contenuto del messaggio, strutturando secondo l'\gls{XML Schema} imposto dal Web Service.
+\item \textbf{Body:} è obbligatorio e contiene il contenuto del messaggio, strutturato secondo l'\gls{XML Schema} imposto dal Web Service.
 \end{itemize}
 
 Nella Figura \ref{soap} è mostrato un esempio di richiesta e risposta del metodo \texttt{setEmail} del Web Service \texttt{LicenseEmailService}.
@@ -60,7 +60,7 @@ Per preservare la sicurezza dei dati ed evitare che chiunque possa utilizzare i 
 Le funzionalità più importanti da esso offerte sono:
 
 \begin{itemize}
-\item autenticare un utente per l'utilzzo di \textit{License Manager 1.0};
+\item autenticare un utente per l'utilizzo di \textit{License Manager 1.0};
 \item generare un \texttt{Product Key};
 \item creare una licenza;
 \item bloccare e sbloccare una licenza;
@@ -118,7 +118,7 @@ Per raccogliere i dati relativi alla gestione e al controllo delle licenze è st
 \item \texttt{Product Key};
 \item \texttt{Serial Number};
 \item \texttt{Tipologia};
-\item componente Hardware associata alla licenza. Essa è espressa tramite una chiave esterna riferita alla tabella HWComponent;
+\item componenti Hardware associate alla licenza. Esse sono espresse tramite una chiave esterna riferita alla tabella HWComponent;
 \item eventuale blocco della licenza;
 \item data di attivazione;
 \item data di scadenza;
@@ -139,7 +139,7 @@ Contiene gli utenti del Software \textit{License Manager 1.0}.\\ Le informazioni
 
 \begin{itemize}
 \item username;
-\item hash della password in \gls{SHA-256};
+\item \gls{Hash} della password in \gls{SHA-256};
 \item essere admin;
 \item poter resettare la propria password;
 \item codice utente (o codice rivenditore);
@@ -171,17 +171,17 @@ Contiene gli \texttt{UniqueID} utilizzati per il controllo durante l’esecuzion
 \item data e ora di creazione del record utilizzata per resettare il contatore delle risincronizzazioni ogni mese.
 \end{itemize}
 
-Il contatore delle risincronizzazioni è utilizzato per tenere traccia di quante volte l'\texttt{UniqueID} non viene trovato sul PC di cui verificare la validità della licenza. Esso può non essere trovato ad esempio per un eliminazione involontaria dei file responsabili al controllo. Il numero di risincronizzazioni permesse è tre ogni mese, in seguito l'azienda è informata dell'anomalia.
+Il contatore delle risincronizzazioni è utilizzato per tenere traccia di quante volte l'\texttt{UniqueID} non viene trovato sul PC di cui verificare la validità della licenza. Esso può non essere trovato ad esempio per un'eliminazione involontaria dei file responsabili al controllo. Il numero di risincronizzazioni permesse è tre ogni mese, in seguito l'azienda è informata dell'anomalia.
 
 
 \subsubsection{EmailCodice}
 
-Contiene i codici inviati via Email per controllare l’effettivo possesso dell’indirizzo email da parte degli utenti del \textit{Software Gestionale Vision}.
+Contiene i codici inviati via Email per controllare l’effettivo possesso dell’indirizzo Email da parte degli utenti del \textit{Software Gestionale Vision}.
 \\Ogni record possiede le seguenti informazioni:
 
 \begin{itemize}
 \item ID del codice da verificare;
-\item indirizzo email a cui è associato il codice;
+\item indirizzo Email a cui è associato il codice;
 \item codice da verificare;
 \item data e ora di creazione del record per rendere inutilizzabile il codice dopo 10 minuti.
 \end{itemize}
@@ -202,7 +202,7 @@ Contiene gli accessi al \textit{Software Gestionale Vision}.
 \item codice utente associato alla licenza di cui si registra l'accesso.
 \end{itemize}
 
-Tra le informazioni è salvato anche il codice utente associato alla licenza per poter avere la lista degli accessi filtrabile per i diversi rifornitori.
+Tra le informazioni è salvato anche il codice utente associato alla licenza per avere la lista degli accessi filtrabile per i diversi rifornitori.
 
 \subsubsection{StoricoStatiLicenze}
 

@@ -7,7 +7,7 @@
 \label{cap:descrizione-stage}
 %**************************************************************
 
-Il capitolo riporta una descrizione dettagliata dell'attività di stage svolta, analizzando brevemente i possibili rischi, le problematiche da risolvere e le soluzioni proposte. Sono inoltre riportate la pianificazione del lavoro e i requisiti richiesti prima dell'inizio dello stage. 
+Il capitolo riporta una descrizione dettagliata dell'attività di stage svolta, analizzando brevemente i possibili rischi, le problematiche da risolvere e le soluzioni proposte. Sono inoltre riportati la pianificazione del lavoro e i requisiti richiesti prima dell'inizio dello stage. 
 
 %**************************************************************
 \section{Analisi dei rischi}
@@ -20,8 +20,8 @@ I rischi analizzati sono divisi per area di competenza, e per ognuno di essi è 
 \begin{itemize}
 	\item livello tecnologico
 	\begin{itemize}
-		\item \textbf{Tecnologie sconosciute:} L'utilizzo di tecnologie sconosciute, come i servizi di Microsoft, potrebbe portare a ritardi o a difficoltà nello svolgimento del progetto. Tuttavia, grazie al periodo di apprendimento pianificato nel primo periodo dello stage, e grazie alla presenza di programmatori esperti nel settore con cui confrontarsi, questo rischio non dovrebbe presentarsi;
-		\item \textbf{Guasti hardware:} Durante lo svolgimento dello stage è possibile che la strumentazione utilizzata, in particolare il computer assegnato, possa incorrere in guasti hardware rischiando rallentamenti e perdita del lavoro. Per scongiurare questo evento, una copia delle soluzioni è salvata regolarmente in una cartella dedicata del server aziendale.   
+		\item \textbf{Tecnologie sconosciute:} L'utilizzo di tecnologie sconosciute, come i servizi di Microsoft, potrebbe portare a ritardi o a difficoltà nello svolgimento del progetto. Tuttavia, grazie al periodo di apprendimento pianificato nella prima fase dello stage, e grazie alla presenza di programmatori esperti nel settore con cui confrontarsi, questo rischio non dovrebbe presentarsi;
+		\item \textbf{Guasti hardware:} Durante lo svolgimento dello stage è possibile che la strumentazione utilizzata, in particolare il computer assegnato, possa incorrere in guasti hardware rischiando rallentamenti e perdita del lavoro. Per evitare questo evento, una copia delle soluzioni è salvata regolarmente in una cartella dedicata del server aziendale.   
 	\end{itemize}
 	\item livello organizzativo
 	\begin{itemize}
@@ -44,7 +44,7 @@ L’orario lavorativo era il seguente: dal lunedì al venerdì dalle 8:40 alle 1
 
 Una licenza Software è il contratto con il quale il titolare dei diritti sul Software, di norma il produttore, concede all'utente il diritto di utilizzarlo, secondo i termini e le condizioni stabilite nel contratto stesso.
 \\
-Ogni installazione del Software è accompagnata da una licenza, e in un accordo di licenza può essere definito quanti utenti possono utilizzarla. Poichè ogni cliente necessita di esigenze diverse, esistono diverse tipologie di licenze del \textit{Software Gestionale Vision}, ognuna delle quali conferisce diverse funzionalità. 
+Ogni installazione del Software è accompagnata da una licenza, e in un accordo di licenza può essere definito quanti utenti possono utilizzarla. Poiché ogni cliente necessita di esigenze diverse, esistono diverse tipologie di licenze del \textit{Software Gestionale Vision}, ognuna delle quali conferisce diverse funzionalità. 
 \\
 Le licenze Software concedono all'utente il diritto d'uso sul prodotto, sempre nel rispetto delle regole in esse contenute. I clienti in possesso di regolare licenza hanno la certezza di utilizzare il Software originale, e rispettando le condizioni d'uso stabilite in fase di acquisto hanno la garanzia di essere conformi alle norme sul diritto d'autore e quindi di non incorrere in nessuna sanzione legale per violazioni della legge.
 \\
@@ -78,15 +78,15 @@ I product key creati sono salvati all'interno di un file, contenente la totalit�
 Infine, poiché i dati sono salvati su un unico file, per preservare la consistenza dei dati non è possibile avviare \textit{GenPK} su più macchine contemporaneamente.
 
 \subsection{Attivazione di una licenza} 
-Il cliente al primo avvio del \textit{Software Gestionale Vision} è invitato a inserire il \texttt{Product Key} ricevuto in fase d'acquisto. Il Software verifica che lo stato del \texttt{Product Key} sia impostato su "da attivare", preleva il \gls{MAC Address} della scheda di rete su cui sta avvenendo l'installazione e, insieme al \texttt{Product Key}, attraverso un algoritmo di cifratura crea l’\texttt{Activation Key}, una stringa che sarà utilizzata per verificare che la licenza sia in uso sulla stessa macchina su cui è stata attivata. Lo stato del \texttt{Product Key}, dopo l'attivazione, viene modificato da “da attivare” ad “attivato”. Come nella creazione della licenza, i cambi di stato e la lista dei \texttt{Product Key} sono contenute in un file che il Software scarica sul PC in uso tramite protocollo FTP dal server dell’azienda, rinviato al server una volta modificato. Questa procedura, com'è già stato evidenziato nel paragrafo precedente, è molto rischiosa, poiché tutte le licenze sono disponibili su un file che potrebbe essere facilmente corrotto o manomesso.\\
+Il cliente al primo avvio del \textit{Software Gestionale Vision} è invitato a inserire il \texttt{Product Key} ricevuto in fase d'acquisto. Il Software verifica che lo stato del \texttt{Product Key} sia impostato su "da attivare", preleva il \gls{MAC Address} della scheda di rete su cui sta avvenendo l'installazione e, insieme al \texttt{Product Key}, attraverso un algoritmo di cifratura crea l’\texttt{Activation Key}, una stringa che sarà utilizzata per verificare che la licenza sia in uso sulla stessa macchina su cui è stata attivata. Lo stato del \texttt{Product Key}, dopo l'attivazione, è modificato da “da attivare” ad “attivato”. Come nella creazione della licenza, i cambi di stato e la lista dei \texttt{Product Key} sono contenuti in un file che il Software scarica sul PC in uso tramite protocollo FTP dal server dell’azienda, rinviato al server una volta modificato. Questa procedura, com'è già stato evidenziato nel paragrafo precedente, è molto rischiosa, poiché tutte le licenze sono disponibili su un file che potrebbe essere facilmente corrotto o manomesso.\\
 Un esempio di attacco tramite questo sistema è poter usufruire di infinite licenze acquistandone due. 
 Il meccanismo dell'attacco è semplice, ed è illustrato nei seguenti passaggi:
 \begin{enumerate}
-\item l'utente malevolo attiva il primo \texttt{Product Key} su una macchina. Lo stato del \texttt{Product Key} viene impostato correttamente da "da attivare" ad "attivato"; 
+\item l'utente malevolo attiva il primo \texttt{Product Key} su una macchina. Lo stato del \texttt{Product Key} è impostato correttamente da "da attivare" ad "attivato"; 
 \item l'utente procede con l'attivazione del secondo \texttt{Product Key}, ma prima di terminare l'operazione il file contenente i dati delle licenze viene modificato, impostando lo stato del primo \texttt{Product Key} a "da attivare";
 \item il primo \texttt{Product Key} è quindi disponibile per una nuova installazione.
 \end{enumerate}
-Questo tipo di attacco è permesso per due motivi. In primo luogo il file contenente i dati delle licenze è salvato sul PC dell'utilizzatore. Anche se cifrato non è difficile capire le stringhe corrispondenti ai termini "da attivare" e "attivato", ed è quindi possibile modificarlo senza conoscere il metodo di cifratura. In secondo luogo i controlli di validità della licenza, come il verificare che la licenza sia attiva su un solo PC per volta, sono svolti totalmente in locale. Quindi, potendo reinstallare il Software su una nuova macchina (ricreando quindi i dati per il controllo), i controlli saranno sempre superati, perché il sistema non ha modo di capire che la licenza è stata installata due volte, dato che può verificare solo che l'installazione del programma non venga copiata su un'altra macchina. 
+Questo tipo di attacco è permesso per due motivi. In primo luogo il file contenente i dati delle licenze è salvato sul PC dell'utilizzatore. Anche se cifrato non è difficile capire le stringhe corrispondenti ai termini "da attivare" e "attivato", ed è quindi possibile modificarlo senza conoscere il metodo di cifratura. In secondo luogo i controlli di validità della licenza, come il verificare che essa sia attiva su un solo PC per volta, sono svolti totalmente in locale. Quindi, potendo reinstallare il Software su una nuova macchina (ricreando quindi i dati per il controllo), i controlli saranno sempre superati, perché il sistema non ha modo di capire che la licenza è stata installata due volte, dato che può verificare solo che l'installazione del programma non venga copiata su un'altra macchina. 
 
 \subsection{Avvio del Software Gestionale Vision} 
 
@@ -101,7 +101,7 @@ programma \textit{GenFileKey}, inviato ai clienti e salvato nella cartella d'ins
 \subsection{Licenze bloccate} 
 
 Le licenze bloccate dall'azienda sono contenute in una \textit{blacklist} salvata all’interno del \textit{Software Gestionale Vision}. Qualora l'azienda volesse aggiungere una nuova licenza nella \textit{blacklist} dovrebbe rilasciare un aggiornamento del proprio Software per far si che il programma riconosca la nuova licenza bloccata e non si avvii.
-\\Questo permette ad un utente, non aggiornando il proprio programma (il che è consentito), di continuare a utilizzare il \textit{Software Gestionale Vision} anche in caso di licenza bloccata. 
+\\Questo permette a un utente, non aggiornando il proprio programma (il che è consentito), di continuare a utilizzare il \textit{Software Gestionale Vision} anche in caso di licenza bloccata. 
 
 \subsection{Procedura di disattivazione} 
 Per disattivare la licenza dal proprio computer e reinstallarla in un altro il cliente è sempre costretto a contattare l'azienda. Questo provoca sia un onere non indifferente per l'azienda, soprattutto nei casi di rinnovamento delle macchine di un'azienda cliente, sia una condizione non ottimale da parte del cliente che si trova costretto a contattare l'azienda quando potrebbe acquisire autonomia con il semplice click di un pulsante.
@@ -115,7 +115,7 @@ L'azienda \textit{VISIONEIMPRESA s.r.l.} oltre ai clienti finali gestisce dei ri
 I rivenditori per operare, ad esempio per creare una licenza o gestirne i moduli, devono sempre contattare l'azienda, in modo che essa sia sempre aggiornata sulla situazione delle proprie licenze e che possa fatturare quanto venduto. I rivenditori quindi dispongono di un'autonomia molto limitata, generando situazioni poco confortevoli e oneri non necessari.
 
 \subsection{Monitoraggio delle licenze}
-L'azienda può monitorare lo stato delle licenze attraverso il Software \textit{GenPK}, ma le informazioni da esso mostrate sono minime, come il cliente associato e la tipologia, o il numero di licenze vendute per tipologia. Altre informazioni fondamentali, come i moduli di una licenza, non sono facilmente reperibili, e avere una visione completa, comprendente anche i rivenditori, aiuterebbe sicuramente ad ottenere una gestione migliore.
+L'azienda può monitorare lo stato delle licenze attraverso il Software \textit{GenPK}, ma le informazioni da esso mostrate sono minime, come il cliente associato e la tipologia, o il numero di licenze vendute per tipologia. Altre informazioni fondamentali, come i moduli di una licenza, non sono facilmente reperibili, e avere una visione completa, comprendente anche i rivenditori, aiuterebbe sicuramente a ottenere una gestione migliore.
 
 
 
@@ -126,22 +126,22 @@ In relazioni alle problematiche analizzate nel precedente paragrafo, sono propos
 
 \subsection{Creazione di una licenza}
 
-La creazione delle licenze avviene tramite il Software \textit{License Manager 1.0}, in sostituzione del Software \textit{GenPK}. Il Software riprende le modalità di creazione di \textit{GenPK}, ma elimina il sistema del file contenente i dati delle licenze ottenuto tramite FTP, e si occupa di salvare le licenze create in un Database. Le operazioni di generazione e salvataggio della  licenza sono gestiti tramite Web Service. 
+La creazione delle licenze avviene tramite il Software \textit{License Manager 1.0}, in sostituzione del Software \textit{GenPK}. Il Software riprende le modalità di creazione di \textit{GenPK}, ma elimina il sistema del file contenente i dati delle licenze ottenuto tramite FTP, e si occupa di salvare le licenze create in un Database. Le operazioni di generazione e salvataggio della  licenza sono gestite tramite Web Service. 
 Il passare da un file condiviso (perennemente a rischio per via dei salvataggi sui PC degli utenti) a un sistema che utilizza un Database sicuro e centralizzato per archiviare e ottenere i dati aumenta di molto la sicurezza della gestione delle licenze.
 
 \subsection{Attivazione di una licenza}
 
-L'attivazione di una licenza richiede come nella precedente procedura l'inserimento del \texttt{Product Key} ricevuto in fase d'acquisto, e in seguito, tramite Web Service, è controllato che esso sia disponibile per un'installazione. Le modifiche di stato avvengono nel Database, eliminando di fatto l'utilità del file condiviso tramite FTP e riducendo la possibilità di attacchi. L’\texttt{Activation Key}, utilizzata per il controllo Hardware, è eliminata e rimpiazzata da un nuovo sistema. Il controllo Hardware è ora basato su un insieme di componenti e non solo sul \texttt{MAC Address} della scheda di rete, in modo da permettere all’utente di cambiare alcune delle componenti del pc (ad esempio in caso di guasti) e non dover ricontattare l’azienda per poter continuare a utilizzare il \textit{Software Gestionale Vision}. 
-Infine, nella prima attivazione il cliente dovrà associare un indirizzo email alla propria licenza, in modo che possa disattivare e reinstallare il programma senza il bisogno di dover contattare l’azienda. Associando un indirizzo email l'utente sarà in grado di riutilizzare autonomamente la propria licenza nella reinstallazione del Software, anche qualora sia impossibilitato a disattivarla, come nel caso di guasto o reinstallazione del sistema operativo del PC in cui la licenza era utilizzata.
+L'attivazione di una licenza richiede come nella precedente procedura l'inserimento del \texttt{Product Key} ricevuto in fase d'acquisto, e in seguito, tramite Web Service, è controllato che esso sia disponibile per un'installazione. Le modifiche di stato avvengono nel Database, eliminando di fatto l'utilità del file condiviso tramite FTP e riducendo la possibilità di attacchi. L’\texttt{Activation Key}, utilizzata per il controllo Hardware, è eliminata e rimpiazzata da un nuovo sistema. Il controllo Hardware è ora basato su un insieme di componenti e non solo sul \texttt{MAC Address} della scheda di rete, in modo da permettere all’utente di cambiare alcune delle componenti del PC (ad esempio in caso di guasti) e non dover ricontattare l’azienda per poter continuare a utilizzare il \textit{Software Gestionale Vision}. 
+Infine, nella prima attivazione il cliente dovrà associare un indirizzo email alla propria licenza, in modo che possa disattivare e reinstallare il programma senza il bisogno di dover contattare l’azienda. Associando un indirizzo Email l'utente sarà in grado di riutilizzare autonomamente la propria licenza nella reinstallazione del Software, anche qualora sia impossibilitato a disattivarla, come nel caso di guasto o reinstallazione del sistema operativo del PC in cui la licenza era utilizzata.
 
 
 \subsection{Avvio del Software Gestionale Vision}
 
 Come analizzato nelle problematiche, l'unico controllo di validità della licenza all'avvio del Software avveniva in locale, controllando l'\texttt{Activation Key} per la verifica Hardware, permettendo di fatto di utilizzare la licenza per un periodo illimitato e in più macchine virtuali grazie alla clonazione. Nel sistema attuale sono stati implementati due  diversi controlli, uno per un accesso senza connessione a Internet e uno per l’accesso con connessione.
 \\
-Il controllo per l’avvio del Software in Offline utilizza informazioni salvate in chiavi di registro per verificare la validità della licenza. È stato realizzato anche un metodo basato sul funzionamento delle firme digitali per verificare l’integrità delle chiavi di registro, così che non possano essere manomesse facilmente. L’utilizzo del programma in Offline è ora permesso per 15 giorni, scaduti i quali sarà chiesto di connettersi a Internet.
+Il controllo per l’avvio del Software in modalità Offline utilizza informazioni salvate in chiavi di registro per verificare la validità della licenza. È stato realizzato anche un metodo basato sul funzionamento delle firme digitali per verificare l’integrità delle chiavi di registro, così che non possano essere manomesse facilmente. L’utilizzo del programma in Offline è ora permesso per 15 giorni, scaduti i quali sarà chiesto di connettersi a Internet.
 \\
-Il controllo all'avvio Online è formato da due procedure:
+Il controllo all'avvio in modalità Online è formato da due procedure:
 \begin{itemize}
 \item all'avvio, tramite Web Service, è controllata la licenza in termini di data di scadenza, bloccaggio e componenti Hardware;
 \item a intervalli di un'ora (tempo riducibile nell'effettiva implementazione del modulo a discrezione dei programmatori) è controllato che l'utente non stia utilizzando il programma su macchine differenti ma con stesso Hardware (ad esempio in seguito a una clonazione di una macchina virtuale).
@@ -162,7 +162,7 @@ Grazie all'associazione di un indirizzo email alla propria licenza un utente è 
 
 \subsection{Scadenza di una licenza}
 
-Nel nuovo sistema di gestione e controllo delle licenze è stata implementata la data di scadenza, permettendo all'azienda di avere un controllo maggiore sulle proprie licenze e poter modificare il metodo di vendita. È implementato un controllo sulla data di scadenza sia all'avvio in Offline sia in Online. Nel controllo all’avvio del programma è anche controllato che la licenza non sia entrata nell’ultimo mese di validità. In quel caso sarà mostrato un \textit{reminder} con i giorni rimanenti prima della scadenza. 
+Nel nuovo sistema di gestione e controllo delle licenze è stata implementata la data di scadenza, permettendo all'azienda di avere un controllo maggiore sulle proprie licenze e poter modificare il metodo di vendita. È implementato un controllo sulla data di scadenza sia all'avvio in modalità Offline sia in Online. Nel controllo all’avvio del programma è anche controllato che la licenza non sia entrata nell’ultimo mese di validità. In quel caso sarà mostrato un \textit{reminder} con i giorni rimanenti prima della scadenza. 
  
 \subsection{Rivenditori}
 
@@ -180,7 +180,6 @@ Grazie al nuovo sistema di monitoraggio l'azienda può visualizzare in ogni mome
 
 
 %**************************************************************
-\newpage
 \section{Pianificazione del Lavoro}
 
 La seguente sezione mostra la pianificazione del lavoro attuata prima di iniziare l'attività di stage e l'effettivo utilizzo delle ore. Per rendere più chiara la pianificazione del lavoro e lo svolgimento effettivo delle attività sono utilizzati Diagrammi di Gantt.
@@ -217,7 +216,7 @@ Nella Figura \ref{dopostage} è mostrata la suddivisione delle attività effetti
 \section{Obiettivi e Requisiti}
 
 \subsection{Obiettivi}
-Nella fase preliminare dello stage sono stati delineati i seguenti obiettivi, in ordine di importanza. Gli obiettivi sono identificati da un codice così composto:
+Nella fase preliminare dello stage sono stati delineati i seguenti obiettivi, in ordine d'importanza. Gli obiettivi sono identificati da un codice così composto:
 $$ XXYY $$
 
 dove XX rappresenta la tipologia dell'obiettivo e YY è un numero progressivo utilizzato per differenziare gli obiettivi della stessa categoria.
@@ -246,7 +245,7 @@ Gli obiettivi identificati sono così suddivisi:
 \item \textbf{obiettivi facoltativi:}\begin{itemize}
 \item OF01: implementazione delle licenze per moduli;
 \item OF02: raccolta dei dati sull’attivazione delle licenze e sul loro utilizzo;
-\item OF03: creazione di una dashboard con statistiche e alert sulle licenze in uso, disattivate, e anomalie.
+\item OF03: creazione di una \textit{dashboard} con statistiche e \textit{alert} sulle licenze in uso, disattivate, e anomalie.
 \end{itemize}
 \item \textbf{obiettivi formativi:}\begin{itemize}
 \item FO01: acquisizione di competenze utili allo sviluppo di software gestionale;
@@ -260,7 +259,7 @@ Durante lo svolgimento dello stage, oltre alla creazione e all'attivazione di un
 
 \subsection{Requisiti}
 
-In relazione agli obiettivi presentati nel paragrafo precedente sono stati identificati i requisiti riportati in seguito.
+In relazione agli obiettivi presentati nel paragrafo precedente, sono stati identificati i requisiti riportati in seguito.
 
 \subsubsection{Requisiti OP01}
 Per definire una valida strategia risolutiva per le problematiche presentate sono stati identificati i seguenti requisiti:
@@ -301,7 +300,7 @@ Per implementare un efficiente sistema di controllo della validità di una licen
 \begin{itemize}
 \item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Online, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere eseguito tramite Web Service; 
 \item deve essere implementato un controllo, all'avvio del \textit{Software Gestionale Vision} in modalità Offline, per verificare che la licenza sia valida in termini di data di scadenza, bloccaggio e componenti Hardware. Il controllo deve essere svolto in locale tramite l'utilizzo di chiavi di registro;
-\item deve essere implementato un controllo, che si ripete durante l'esecuzione del \textit{Software Gestionale Vision}, per verificare che la licenza sia in uso su una solo computer per volta, anche in caso di computer identici come macchine virtuali clonate. Il controllo deve essere eseguito tramite Web Service.
+\item deve essere implementato un controllo, che si ripete durante l'esecuzione del \textit{Software Gestionale Vision}, per verificare che la licenza sia in uso su un solo computer per volta, anche in caso di computer identici come macchine virtuali clonate. Il controllo deve essere eseguito tramite Web Service.
 \end{itemize}
 
 \subsubsection{Requisiti OS01}
@@ -317,7 +316,7 @@ Per correlare a una licenza la data di scadenza, con i relativi controlli, sono 
 
 \subsubsection{Requisiti OF01}
 
-Per implementare efficacemente la gestione dei moduli di una licenza sono stati identificati i seguenti requisti:
+Per implementare efficacemente la gestione dei moduli di una licenza sono stati identificati i seguenti requisiti:
 
 \begin{itemize}
 \item il Software di gestione delle licenze, \textit{License Manager 1.0}, deve dare la possibilità di scegliere e impostare i moduli di una licenza per ogni tipologia;
@@ -339,22 +338,22 @@ Per raccogliere dati sull'attivazione delle licenze e sul loro utilizzo sono sta
 
 \subsubsection{Requisiti OF03}
 
-Per implementare una dashboard con statistiche e alert sulle licenze in uso sono stati identificati i seguenti requisiti:
+Per implementare una \textit{dashboard} con statistiche e \textit{alert} sulle licenze in uso sono stati identificati i seguenti requisiti:
 
 \begin{itemize}
 
 \item \textit{License Manager 1.0} deve mostrare statistiche utili, come il numero di licenze bloccate, disattivate, scadute o in scadenza;
-\item il modulo di avvio del \textit{Software Gestionale Vision} deve tener traccia degli accessi di un utente, registrando i dati in un apposita tabella del Database. \textit{License Manager 1.0} deve mostrare tali accessi;
+\item il modulo di avvio del \textit{Software Gestionale Vision} deve tener traccia degli accessi di un utente, registrando i dati in un'apposita tabella del Database. \textit{License Manager 1.0} deve mostrare tali accessi;
 \item gli accessi multipli di una licenza, ad esempio da diversi \texttt{indirizzi IP} o da diversi \texttt{MAC Address}, devono essere evidenziati da \textit{License Manager 1.0}.
 
 \end{itemize}
 \subsubsection{Requisiti FO01}
 
-Per acquisire competenzi utili allo sviluppo di Software gestionale sono stati identificati i seguenti requisiti:
+Per acquisire competenze utili allo sviluppo di Software gestionale sono stati identificati i seguenti requisiti:
 
 \begin{itemize}
-\item è necessario intraprendere un periodo di formazione riguardo il \textit{Software Gestionale Vision};
-\item è necessario intraprendere un periodo di formazione riguardo i Software di ausilio al \textit{Software Gestionale Vision}, come \textit{GenPK} e \textit{GenFileKey};
+\item è necessario intraprendere un periodo di formazione riguardo al \textit{Software Gestionale Vision};
+\item è necessario intraprendere un periodo di formazione riguardo ai Software di ausilio al \textit{Software Gestionale Vision}, come \textit{GenPK} e \textit{GenFileKey};
 \item è necessario analizzare alcune soluzioni sviluppate dai programmatori dell'azienda in contesti simili.
 \end{itemize}
 
@@ -384,7 +383,7 @@ I requisiti identificati per \textit{License Manager 1.0} sono i seguenti:
 
 \begin{itemize}
 \item il Software deve fornire la possibilità di gestire tutti gli aspetti di una licenza, dalla creazione alla modifica, fino all'eliminazione;
-\item il Software deve offire il monitoraggio delle licenze su diversi fronti;
+\item il Software deve offrire il monitoraggio delle licenze su diversi fronti;
 \item il Software deve utilizzare Web Service e Database per svolgere le operazioni;
 \item il Software deve essere distribuito ai rivenditori con funzionalità limitate, per preservare la sicurezza dell'azienda.
 \end{itemize}

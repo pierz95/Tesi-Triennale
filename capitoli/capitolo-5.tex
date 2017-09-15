@@ -10,7 +10,7 @@
 \textit{License Manager 1.0} nasce con lo scopo di creare nuove licenze, eliminando \textit{GenPK} e le problematiche ad esso correlate. Nel corso dello stage, con il delinearsi di nuovi obiettivi, il programma è stato ampliato per poter gestire la maggior parte degli aspetti di una licenza, incluso il monitoraggio. Le funzionalità del Software sono svolte tramite chiamate a Web Service, i quali utilizzano il Database \texttt{DBLicenze} per il salvataggio dei dati.
 \\
 Inizialmente pensato per un uso interno all'azienda, grazie alle molteplici funzionalità che esso offriva, è stato deciso di distribuire il Software anche ai rivenditori, concedendo loro una maggior capacità operativa.
-I rivenditori, per la sicurezza dell'azienda, possono usufruire di operazioni limitate, e le modifiche più rilevanti sono comunicate a \textit{VISIONEIMPRESA s.r.l} tramite mail.
+I rivenditori, per la sicurezza dell'azienda, possono usufruire di operazioni limitate, e le modifiche più rilevanti sono comunicate a \textit{VISIONEIMPRESA s.r.l.} tramite mail.
 
 
 %**************************************************************
@@ -95,7 +95,7 @@ Nello specifico le operazioni permesse, nell'ordine, sono:
 \item \textbf{Blocca:} permette di bloccare una licenza;
 \item \textbf{Sblocca:} permette di sbloccare una licenza;
 \item \textbf{Elimina:} permette di eliminare una licenza;
-\item \textbf{Disassocia:} permette di dissociare una licenza dalla propria componente Hardware;
+\item \textbf{Disassocia:} permette di dissociare una licenza dalle proprie componenti Hardware;
 \item \textbf{Gestione Moduli:} permette di gestire i moduli della licenza;
 \item \textbf{Ulteriori Info:} fornisce ulteriori informazioni sulla licenza;
 \item \textbf{Aggiorna lista:} permette di aggiornare la lista delle licenze;
@@ -140,7 +140,7 @@ Per creare una licenza è necessario innanzitutto valorizzare i campi obbligator
 
 \end{itemize}	
 
-Dopo aver scelto \texttt{Tipologia} e \texttt{Serial Number} è necessario cliccare su "Genera Credenziali" per poter continuare con la creazione della licenza. Cliccando su questo pulsante è invocato un metodo del Web Service \texttt{LicenseManagerService} che produrrà un \texttt{Serial Number} compatibile con la scelta effettuata e un \texttt{Product Key} che identifica univocamente una licenza, indipendentemente dalla tipologia. Qualora il \texttt{Serial Number} scelto in caso di selezione "Manuale" o "Casuale" fosse già in uso, sarà comunicato che non è possibile utilizzare tali valori ed è necessario sceglierne degli altri. In caso di scelta "Prime due cifre per l’anno" il \texttt{Serial Number} prodotto sarà il primo libero disponibile a partire dal numero a quattro cifre scelto. Dopo la creazione delle credenziali il pulsante "Salva" si attiverà e sarà possibile salvare la licenza, come si evince dalla Figura \ref{salva}.
+Dopo aver scelto \texttt{Tipologia} e \texttt{Serial Number} è necessario cliccare su "Genera Credenziali" per continuare con la creazione della licenza. Cliccando su questo pulsante è invocato un metodo del Web Service \texttt{LicenseManagerService} che produrrà un \texttt{Serial Number} compatibile con la scelta effettuata e un \texttt{Product Key} che identifica univocamente una licenza, indipendentemente dalla tipologia. Qualora il \texttt{Serial Number} scelto in caso di selezione "Manuale" o "Casuale" fosse già in uso, sarà comunicato che non è possibile utilizzare tali valori ed è necessario sceglierne degli altri. In caso di scelta "Prime due cifre per l’anno" il \texttt{Serial Number} prodotto sarà il primo libero disponibile a partire dal numero a quattro cifre scelto. Dopo la creazione delle credenziali il pulsante "Salva" si attiverà e sarà possibile salvare la licenza, come si evince dalla Figura \ref{salva}.
 
  \begin{figure}[!h] 
     \centering 
@@ -247,8 +247,8 @@ Nella Figura \ref{elim} l’utente \textit{Guest} "ProvaLT", tentando l’elimin
 
 \subsection{Disassocia}
 
-La funzione "Disassocia" permette di dissociare una licenza dalla sua componente Hardware, utilizzata per verificare che la licenza sia in uso su un solo computer per volta. 
-Dissociando una licenza dalla sua componente Hardware se ne permette la reinstallazione in una nuova macchina, mentre su quella attuale all’avvio del \textit{Software Gestionale Vision} risulterà che la licenza non è più associata a quel dispositivo.
+La funzione "Disassocia" permette di dissociare una licenza dalle sue componenti Hardware, utilizzate per verificare che la licenza sia in uso su un solo computer per volta. 
+Dissociando una licenza dalle sue componenti Hardware se ne permette la reinstallazione in una nuova macchina, mentre su quella attuale all’avvio del \textit{Software Gestionale Vision} risulterà che la licenza non è più associata a quel dispositivo.
 
 \subsection{Gestione Moduli}
 \label{gestmod}
@@ -400,7 +400,7 @@ Le statistiche mostrate sono le seguenti:
 \item \textbf{Licenze in scadenza:} quante licenze scadranno nei prossimi tre mesi;
 \item \textbf{Licenze scadute:} quante licenze sono scadute;
 \item \textbf{Licenze attive ultimo mese:} quante licenze sono state usate nell’ultimo mese attraverso il \textit{Software Gestionale Vision};
-\item \textbf{Licenze non associate:} quante licenze non hanno una componente Hardware associata;
+\item \textbf{Licenze non associate:} quante licenze non hanno componenti Hardware associate;
 \item \textbf{Licenze bloccate:} quante licenze sono bloccate.
 
 \end{itemize}
@@ -425,7 +425,7 @@ In Figura \ref{accessi} è possibile vedere una situazione esempio della sezione
 Sotto le voci "Licenze con multipli IP" e "Licenze con multipli MAC Address" sono mostrate quante licenze hanno rispettivamente più di un \texttt{indirizzo IP} e più {MAC Address} associati.
 Se una licenza dovesse avere più di due indirizzi associati verrebbe contata comunque una sola volta.\\
 Cliccando su "Licenze con multipli IP" vengono selezionati in verde il \texttt{Product Key} e \texttt{l’indirizzo IP} dei record che hanno un \texttt{indirizzo IP} diverso dalla prima occorrenza per quel \texttt{Product Key}.\\
-Cliccando su "Licenze con multipli MAC Address" vegono selezionati in rosso il \texttt{Product Key} e il \texttt{MAC Address} dei record che hanno un \texttt{MAC Address} diverso dalla prima occorrenza per quel \texttt{Product Key}.
+Cliccando su "Licenze con multipli MAC Address" vengono selezionati in rosso il \texttt{Product Key} e il \texttt{MAC Address} dei record che hanno un \texttt{MAC Address} diverso dalla prima occorrenza per quel \texttt{Product Key}.
 In caso una licenza avesse sia diverso \texttt{indirizzo IP} sia diverso \texttt{MAC Address} il \texttt{Product Key} è evidenziato in viola.\\
 Il funzionamento illustrato in precedenza è mostrato nella Figura \ref{multip}.
 
@@ -483,8 +483,8 @@ I campi Username ed Email sono obbligatori.
 \item \textbf{Email:} lega un utente a una mail, che sarà utilizzata sia per l’invio della password da utilizzare per il primo accesso sia per le notifiche di creazione di nuove licenze da parte di un rivenditore.
 \end{itemize}
 Il campo \texttt{Admin}, se selezionato, identifica l’utente come \textit{Admin}, fornendone tutti i privilegi.\\
-Il \texttt{Codice Utente} è deciso manualmente alla creazione o in seguito attraverso la funzione di modifica utente, e serve per identificare un utente con il proprio codice rivenditore. Più utenti possono avere lo stesso \texttt{Codice Utente}, e saranno quindi in grado di gestire le stesse licenze. Gli \textit{Admin} hanno il \texttt{Codice Utente} sempre impostato a "CODICEADMIN", il che gli differenzia dagli altri utenti \textit{Guest}.\\
-Dopo aver salvato l’utente, tramite l'utilizzo del Web Service \texttt{LicenseManagerService} è inviata una Mail all’indirizzo scelto contenente l’username e la password da utilizzare per il primo accesso. Dopo l’accesso, è richiesto l’inserimento di una nuova password per questioni di sicurezza.
+Il \texttt{Codice Utente} è deciso manualmente alla creazione o in seguito attraverso la funzione di modifica utente, e serve per identificare un utente con il proprio codice rivenditore. Più utenti possono avere lo stesso \texttt{Codice Utente}, e saranno quindi in grado di gestire le stesse licenze. Gli \textit{Admin} hanno il \texttt{Codice Utente} sempre impostato a "CODICEADMIN", il che li differenzia dagli altri utenti \textit{Guest}.\\
+Dopo aver salvato l’utente, tramite l'utilizzo del Web Service \texttt{LicenseManagerService} è inviata una mail all’indirizzo scelto contenente l’username e la password da utilizzare per il primo accesso. Dopo l’accesso, è richiesto l’inserimento di una nuova password per questioni di sicurezza.
 
 
 \subsection{Modifica}
